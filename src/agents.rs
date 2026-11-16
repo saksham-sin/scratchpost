@@ -231,8 +231,9 @@ fn render_bootstrap_prompt(master: &Path, config: &Config) -> String {
         r#"{marker}
 # ScratchPost — Agent Bootstrap
 
-Paste this file into your agent's chat once, at the start of the session. It
-configures the agent for this workspace. You do not need to read anything else
+You are reading this because a human attached it to your chat. It is your
+onboarding contract for this workspace: read it, then take ownership of the
+workspace and follow it for every commit. You do not need to read anything else
 first.
 
 ---

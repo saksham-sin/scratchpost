@@ -324,11 +324,12 @@ fn init(master: &Path) -> i32 {
     println!("discovered {} repository(ies)", repos.len());
     println!("\n{}", style.section("next"));
     println!(
-        "  1. paste {} into your agent's chat",
+        "  1. attach {} to your agent's chat",
         style.accent("scratchpost-agent-prompt.md")
     );
+    println!("  2. ask the agent to pick this workspace up and follow the contract");
     println!(
-        "  2. the agent attaches itself with {}",
+        "     it attaches itself with {}",
         style.accent("sp run --agent <name> -- bash")
     );
     println!(

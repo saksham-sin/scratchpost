@@ -207,7 +207,7 @@ ScratchPost is built for agents, not for humans typing commands. `sp init` scaff
 | `.cursorrules` | Cursor IDE |
 | `.claude/skills/scratchpost/` | Claude Code skill |
 
-Paste the bootstrap prompt once and the agent knows: attach to a session, never invent a sequence number, and how to parse `SP_BLOCKED`.
+Attach the bootstrap prompt once and the agent knows: attach to a session, never invent a sequence number, and how to parse `SP_BLOCKED`.
 
 <details>
 <summary><b>MCP stdio server — <code>sp --mcp</code></b></summary>
@@ -263,19 +263,54 @@ Mode changes apply immediately — the daemon updates the seqlock snapshot and t
 
 ## Get started
 
+### 1. Install
+
 ```sh
-# 1. Install
 curl -sSL https://raw.githubusercontent.com/saksham-sin/scratchpost/main/install.sh | sh
-
-# 2. Initialize your master folder (discovers child repos, installs hooks, starts the daemon)
-cd /path/to/your/master/folder
-sp init
-
-# 3. Attach an agent
-sp shell --agent agent_1
 ```
 
-That is the whole setup. `sp init` writes the agent scaffolds, so your agent already knows the rules.
+### 2. Initialize your master folder
+
+```sh
+cd /path/to/your/master/folder
+sp init
+```
+
+`sp init` discovers your child repositories, installs the managed Git hooks, starts
+the daemon, and writes the agent scaffolds — including
+`scratchpost-agent-prompt.md`, the bootstrap contract.
+
+### 3. Hand the workspace to your agent
+
+You do not run ScratchPost. Your agent does. Attach the bootstrap file to the
+agent's chat and tell it to pick the workspace up:
+
+> Read `scratchpost-agent-prompt.md` and take ownership of this ScratchPost
+> workspace. Attach yourself to a session, then follow the contract for every
+> commit.
+
+That is the whole setup. The agent reads the contract, attaches itself with
+`sp run --agent <name> -- bash` (or `sp --mcp` if its harness speaks MCP), and
+from then on every `git commit` it makes is gated. You never type a coordination
+command again.
+
+<details>
+<summary><b>What the agent does with that prompt</b></summary>
+
+1. **Attaches to a session** — `sp run --agent <name> -- bash` provisions a private
+   worktree, a disjoint `SP_PORT_BASE` band, and isolated caches.
+2. **Asks before inventing a sequence** — `sp sequence next --namespace <repo>:<path>`
+   returns the key to use, so it never guesses `200`.
+3. **Commits through the gate** — a collision returns `exit 1` with `SP_BLOCKED v1`
+   and the `SP_CONFLICT_JSON` footer.
+4. **Self-corrects** — it parses the footer, runs `sp resequence`, re-stages, and
+   retries. No human in the loop.
+
+The same contract is scaffolded for each harness, so the agent may already have it:
+`.github/copilot-instructions.md`, `.cursorrules`, and
+`.claude/skills/scratchpost/` all point back at `scratchpost-agent-prompt.md`.
+
+</details>
 
 <details>
 <summary><b>Build from source instead</b></summary>
