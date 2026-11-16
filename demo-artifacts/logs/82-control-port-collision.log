@@ -1,0 +1,3 @@
+=== CONTROL 3: port collision on concurrent test runs ===
+agent_1 bound 127.0.0.1:8080 (test server)
+agent_2 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)

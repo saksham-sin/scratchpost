@@ -1,0 +1,4 @@
+SP_NOTICE v1 seq=10 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=9 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=10 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=11 severity=info kind=commit-permit agent=agent_2 message=commit permit 7a38794f75a884542d6acb60b9d9b448 issued for auth-service (1 sequence claim(s))

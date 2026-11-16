@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+
+jobs:
+  test:
+    name: build, test, lint
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo registry and build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Check formatting
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Build
+        run: cargo build --release --locked
+
+      - name: Unit tests
+        run: cargo test --locked
+
+      - name: End-to-end acceptance
+        run: bash scripts/verify-e2e.sh
+
+      - name: Report binary size
+        run: |
+          ls -l target/release/sp
+          size=$(stat -f%z target/release/sp 2>/dev/null || stat -c%s target/release/sp)
+          echo "release binary: ${size} bytes"
+          test "$size" -lt 1048576 || { echo "binary exceeds the 1 MB budget"; exit 1; }
+
+  ten-agent:
+    name: ten-agent stress simulation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry and build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Build
+        run: cargo build --release --locked
+
+      - name: Ten-agent parallel stress simulation
+        run: bash scripts/ten-agent-sim.sh
+
+      - name: Upload simulation transcripts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ten-agent-logs
+          path: demo-artifacts/logs/
+          retention-days: 7

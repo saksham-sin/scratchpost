@@ -1,0 +1,21 @@
+SP_NOTICE v1 seq=19 severity=info kind=commit-permit agent=agent_5 message=commit permit db137d3ff7b63b06e9db177dbfb0bf52 issued for notification-service (0 sequence claim(s))
+SP_NOTICE v1 seq=20 severity=info kind=mutation-published agent=agent_5 message=agent agent_5 committed notification-service (898d05bc6862b50aa4762b048a687b9abe145425); peers must rebase before publication
+{
+  "released": [
+    {
+      "arrived": [
+        "agent_1"
+      ],
+      "barrier_id": 1,
+      "component": "agent_1+agent_2",
+      "deadline_ms": 1794845683933,
+      "open": false,
+      "opened_ms": 1794845563933,
+      "participants": [
+        "agent_1",
+        "agent_2"
+      ],
+      "released": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+SP_NOTICE v1 seq=1 severity=info kind=daemon-started agent=system message=daemon started for /private/tmp/sp-enterprise-sim
+SP_NOTICE v1 seq=2 severity=info kind=session-active agent=agent_1 message=agent agent_1 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace with port base 31000
+SP_NOTICE v1 seq=3 severity=info kind=session-active agent=agent_2 message=agent agent_2 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace with port base 31100
+SP_NOTICE v1 seq=4 severity=info kind=session-active agent=agent_3 message=agent agent_3 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace with port base 31200
+SP_NOTICE v1 seq=5 severity=info kind=session-active agent=agent_4 message=agent agent_4 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace with port base 31300
+SP_NOTICE v1 seq=6 severity=info kind=session-active agent=agent_5 message=agent agent_5 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace with port base 31400
+SP_NOTICE v1 seq=7 severity=info kind=commit-permit agent=agent_1 message=commit permit 22eb17b310a9425f06bb9dbadf953c48 issued for auth-service (1 sequence claim(s))

@@ -1,0 +1,11 @@
+🐈 ScratchPost · session
+  agent agent_2
+  session    agent_2-1a1e592230a
+  slot       2
+  port_base  31100
+  workspace  /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace
+  repo auth-service path=auth-service branch=sp/agent_2/1a1e592230a base=af2cbf2cc9db
+  repo payment-service path=payment-service branch=sp/agent_2/1a1e592230a base=790863959f2d
+[sp/agent_2/1a1e592230a e3b6eb3] agent_2 adds V102
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/main/resources/db/migration/V102__agent_2.sql

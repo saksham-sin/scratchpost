@@ -1,0 +1,15 @@
+SP_NOTICE v1 seq=77 severity=info kind=commit-permit agent=agent_10 message=commit permit cdaff7fd29ec55228c481d6a0d57811b issued for payment-service (1 sequence claim(s))
+SP_NOTICE v1 seq=78 severity=info kind=mutation-published agent=agent_10 message=agent agent_10 committed payment-service (f7d27cf9db5279f931ccf8adbf0d6fe390756139); peers must rebase before publication
+{
+  "claim": {
+    "agent": "agent_1",
+    "claim_id": 1,
+    "created_ms": 1794852979268,
+    "expires_ms": 1794853279268,
+    "note": "agent_1 owns User.java",
+    "path": "src/main/java/com/demo/auth/User.java",
+    "repo": "auth-service",
+    "strength": "mandatory"
+  },
+  "created": true
+}

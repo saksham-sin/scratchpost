@@ -1,0 +1,59 @@
+SP_NOTICE v1 seq=14 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=1 severity=info kind=daemon-started agent=system message=daemon started for /private/tmp/sp-ten-agent-sim
+SP_NOTICE v1 seq=2 severity=info kind=session-active agent=agent_1 message=agent agent_1 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace with port base 31000
+SP_NOTICE v1 seq=3 severity=info kind=session-active agent=agent_2 message=agent agent_2 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace with port base 31100
+SP_NOTICE v1 seq=4 severity=info kind=session-active agent=agent_3 message=agent agent_3 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace with port base 31200
+SP_NOTICE v1 seq=5 severity=info kind=session-active agent=agent_4 message=agent agent_4 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace with port base 31300
+SP_NOTICE v1 seq=6 severity=info kind=session-active agent=agent_5 message=agent agent_5 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace with port base 31400
+SP_NOTICE v1 seq=7 severity=info kind=session-active agent=agent_6 message=agent agent_6 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace with port base 31500
+SP_NOTICE v1 seq=8 severity=info kind=session-active agent=agent_7 message=agent agent_7 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace with port base 31600
+SP_NOTICE v1 seq=9 severity=info kind=session-active agent=agent_8 message=agent agent_8 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace with port base 31700
+SP_NOTICE v1 seq=10 severity=info kind=session-active agent=agent_9 message=agent agent_9 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace with port base 31800
+SP_NOTICE v1 seq=11 severity=info kind=session-active agent=agent_10 message=agent agent_10 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace with port base 31900
+SP_NOTICE v1 seq=12 severity=info kind=commit-permit agent=agent_1 message=commit permit dead19e1ad04171d00aa7524dbdff0a3 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=13 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (6abad911502607353ecf47a729246e4a47fd7213); peers must rebase before publication
+SP_NOTICE v1 seq=14 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_BLOCKED v1 code=SP_SEQUENCE_COLLISION conflict_id=03433c28c4bc0002
+agent=agent_3 repo=auth-service branch=sp/agent_3/1a1e592221f operation=git.commit
+
+Your commit was NOT created. A deterministic repository check failed.
+This is a coordination conflict, not a transient Git error.
+
+EVIDENCE
+  rule: liquibase.changeset_id
+  namespace: auth-service:src/main/resources/db/dbchangelog.xml
+  file: src/main/resources/db/dbchangelog.xml
+  line: 11
+  requested value: 200
+  reserved by: agent_1 (intent/claim 1)
+  lowest_free: 201
+  base: af2cbf2cc9db22779637a02600f0712c9dd67c65
+  conflicting paths: src/main/resources/db/dbchangelog.xml
+  detail: sequence namespace auth-service:src/main/resources/db/dbchangelog.xml is already reserved
+
+WHY THIS MATTERS
+  Another agent or the base branch already owns part of this change.
+  Committing it unchanged would produce an inconsistent repository state.
+
+RESOLUTION
+  1. Change the value at src/main/resources/db/dbchangelog.xml:11 from 200 to 201.
+       sp resequence --agent agent_3 --file auth-service/src/main/resources/db/dbchangelog.xml --from 200 --to 201
+  2. Re-stage the edited file.
+       git -C auth-service add -- src/main/resources/db/dbchangelog.xml
+  3. Retry the original commit.
+       git commit -m "<your original message>"
+
+RETRY CONTRACT
+  mode: rerun_original_command
+  validation: automatic_on_retry
+  max_attempts: 3
+  idempotent: true
+
+FORBIDDEN
+  - git commit --no-verify
+  - editing .scratchpost state
+  - force-pushing another agent branch
+
+SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_SEQUENCE_COLLISION","conflict_id":"03433c28c4bc0002","operation":"git.commit","agent":"agent_3","repo":"auth-service","branch":"sp/agent_3/1a1e592221f","base_oid":"af2cbf2cc9db22779637a02600f0712c9dd67c65","head_oid":"af2cbf2cc9db22779637a02600f0712c9dd67c65","paths":["src/main/resources/db/dbchangelog.xml"],"evidence":{"kind":"sequence_collision","rule":"liquibase.changeset_id","namespace":"auth-service:src/main/resources/db/dbchangelog.xml","path":"src/main/resources/db/dbchangelog.xml","line":11,"requested":"200","holder":"agent_1 (intent/claim 1)","holder_intent":1,"lowest_free":"201","base_oid":"af2cbf2cc9db22779637a02600f0712c9dd67c65","target_oid":null,"conflicting_paths":["src/main/resources/db/dbchangelog.xml"],"detail":"sequence namespace auth-service:src/main/resources/db/dbchangelog.xml is already reserved"},"resolution":{"summary":"Reassign the duplicate sequence value and retry the commit.","steps":[{"ordinal":1,"action":"Change the value at src/main/resources/db/dbchangelog.xml:11 from 200 to 201.","command":"sp resequence --agent agent_3 --file auth-service/src/main/resources/db/dbchangelog.xml --from 200 --to 201"},{"ordinal":2,"action":"Re-stage the edited file.","command":"git -C auth-service add -- src/main/resources/db/dbchangelog.xml"},{"ordinal":3,"action":"Retry the original commit.","command":"git commit -m \"<your original message>\""}],"safe_retry_command":null,"forbidden_actions":["git commit --no-verify","editing .scratchpost state","force-pushing another agent branch"]},"retry":{"mode":"rerun_original_command","idempotent":true,"retry_after_ms":null,"max_attempts":3,"validation":"automatic_on_retry"}}
+
+Exit status: 1

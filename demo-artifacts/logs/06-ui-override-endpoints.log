@@ -1,0 +1,8 @@
+$ curl -s -X POST -d '{"mode":"barrier-stacked"}' localhost:19200/api/mode
+{"config":{"barrier_scope":"component","barrier_timeout_ms":120000,"lease_timeout_ms":300000,"max_sessions":32,"mode":"barrier-stacked","port_band_width":100,"port_base_start":31000,"ui_port":19200},"ok":true}
+$ curl -s -X POST -d '{"mode":"fcfs"}' localhost:19200/api/mode
+{"config":{"barrier_scope":"component","barrier_timeout_ms":120000,"lease_timeout_ms":300000,"max_sessions":32,"mode":"fcfs","port_band_width":100,"port_base_start":31000,"ui_port":19200},"ok":true}
+$ curl -s -X POST localhost:19200/api/barrier/release
+{"barrier":{"released":[]},"ok":true}
+$ curl -s -X POST -d '{"agent":"agent_6"}' localhost:19200/api/agent/evict
+{"agent":"agent_6","ok":true,"result":{"agent":"agent_6","evicted":true}}

@@ -1,0 +1,383 @@
+{
+  "barrier": {
+    "arrived": [],
+    "barrier_id": 0,
+    "component": "",
+    "deadline_ms": 0,
+    "open": false,
+    "opened_ms": 0,
+    "participants": [],
+    "released": false
+  },
+  "barriers": [],
+  "claims": [],
+  "components": [],
+  "config": {
+    "barrier_scope": "workspace",
+    "barrier_timeout_ms": 20000,
+    "lease_timeout_ms": 300000,
+    "max_sessions": 32,
+    "mode": "fcfs",
+    "port_band_width": 100,
+    "port_base_start": 31000,
+    "ui_port": 19200
+  },
+  "daemon_pid": 63245,
+  "generation": 24,
+  "intents": [],
+  "master_root": "/private/tmp/sp-ten-agent-sim",
+  "notices": [
+    {
+      "agent": null,
+      "created_ms": 1794852967153,
+      "kind": "daemon-started",
+      "message": "daemon started for /private/tmp/sp-ten-agent-sim",
+      "seq": 1,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852967392,
+      "kind": "session-active",
+      "message": "agent agent_1 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace with port base 31000",
+      "seq": 2,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852967657,
+      "kind": "session-active",
+      "message": "agent agent_2 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace with port base 31100",
+      "seq": 3,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852967915,
+      "kind": "session-active",
+      "message": "agent agent_3 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace with port base 31200",
+      "seq": 4,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852968174,
+      "kind": "session-active",
+      "message": "agent agent_4 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace with port base 31300",
+      "seq": 5,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852968431,
+      "kind": "session-active",
+      "message": "agent agent_5 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace with port base 31400",
+      "seq": 6,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852968692,
+      "kind": "session-active",
+      "message": "agent agent_6 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace with port base 31500",
+      "seq": 7,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852968949,
+      "kind": "session-active",
+      "message": "agent agent_7 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace with port base 31600",
+      "seq": 8,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852969205,
+      "kind": "session-active",
+      "message": "agent agent_8 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace with port base 31700",
+      "seq": 9,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852969464,
+      "kind": "session-active",
+      "message": "agent agent_9 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace with port base 31800",
+      "seq": 10,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852969718,
+      "kind": "session-active",
+      "message": "agent agent_10 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace with port base 31900",
+      "seq": 11,
+      "severity": "info"
+    }
+  ],
+  "path_claims": [],
+  "sessions": [
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852967384,
+      "last_heartbeat_ms": 1794852967409,
+      "port_base": 31000,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_1/1a1e5922404",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_1/1a1e5922404",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_1-1a1e5922404",
+      "slot": 1,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852969709,
+      "last_heartbeat_ms": 1794852969742,
+      "port_base": 31900,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_10/1a1e5922b2c",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_10/1a1e5922b2c",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_10-1a1e5922b2c",
+      "slot": 10,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852967648,
+      "last_heartbeat_ms": 1794852967675,
+      "port_base": 31100,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_2/1a1e592230a",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_2/1a1e592230a",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_2-1a1e592230a",
+      "slot": 2,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852967907,
+      "last_heartbeat_ms": 1794852967934,
+      "port_base": 31200,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_3/1a1e592221f",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_3/1a1e592221f",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_3-1a1e592221f",
+      "slot": 3,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852968167,
+      "last_heartbeat_ms": 1794852968195,
+      "port_base": 31300,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_4/1a1e5922117",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_4/1a1e5922117",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_4-1a1e5922117",
+      "slot": 4,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852968423,
+      "last_heartbeat_ms": 1794852968452,
+      "port_base": 31400,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_5/1a1e5922016",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_5/1a1e5922016",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_5-1a1e5922016",
+      "slot": 5,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852968684,
+      "last_heartbeat_ms": 1794852968711,
+      "port_base": 31500,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_6/1a1e5922f16",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_6/1a1e5922f16",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_6-1a1e5922f16",
+      "slot": 6,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852968941,
+      "last_heartbeat_ms": 1794852968967,
+      "port_base": 31600,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_7/1a1e5922e2c",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_7/1a1e5922e2c",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_7-1a1e5922e2c",
+      "slot": 7,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852969197,
+      "last_heartbeat_ms": 1794852969228,
+      "port_base": 31700,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_8/1a1e5922d2d",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_8/1a1e5922d2d",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_8-1a1e5922d2d",
+      "slot": 8,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852969456,
+      "last_heartbeat_ms": 1794852969480,
+      "port_base": 31800,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_9/1a1e5922c29",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_9/1a1e5922c29",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_9-1a1e5922c29",
+      "slot": 9,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace"
+    }
+  ],
+  "started_ms": 1794852967145
+}

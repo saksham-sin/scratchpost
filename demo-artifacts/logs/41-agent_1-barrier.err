@@ -1,0 +1,44 @@
+SP_NOTICE v1 seq=8 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (bfbd1d46e7f3e7e4ebe963551b9e8c8be96a2ab7); peers must rebase before publication
+SP_NOTICE v1 seq=9 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=10 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=11 severity=info kind=commit-permit agent=agent_2 message=commit permit 7a38794f75a884542d6acb60b9d9b448 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=12 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed auth-service (cd0882f19c0b5d75c28bfa5c4591b28b0a58c61c); peers must rebase before publication
+SP_NOTICE v1 seq=13 severity=info kind=commit-permit agent=agent_3 message=commit permit 15c442734bbc61f32d035991dca3bd39 issued for billing-service (1 sequence claim(s))
+SP_NOTICE v1 seq=14 severity=info kind=mutation-published agent=agent_3 message=agent agent_3 committed billing-service (2d12436b11201d5d072e7feaf51487b434803dbf); peers must rebase before publication
+SP_NOTICE v1 seq=15 severity=blocking kind=commit-blocked agent=agent_4 message=42 is reserved by agent_3 for billing-service:db/migration
+SP_NOTICE v1 seq=16 severity=info kind=commit-permit agent=agent_4 message=commit permit e4bee6217b3ea1f4c798a3612798b3e4 issued for billing-service (1 sequence claim(s))
+SP_NOTICE v1 seq=17 severity=info kind=mutation-published agent=agent_4 message=agent agent_4 committed billing-service (b803a3467b564b735f83df112fa75c30d86d4289); peers must rebase before publication
+SP_NOTICE v1 seq=18 severity=info kind=mode-changed agent=system message=coordination mode set to barrier-stacked
+SP_BLOCKED v1 code=SP_BARRIER_WAIT conflict_id=03431febb8580003
+agent=agent_1 repo=multiple branch=session operation=git.commit
+
+Your commit was NOT created. A deterministic repository check failed.
+This is a coordination conflict, not a transient Git error.
+
+EVIDENCE
+  detail: barrier 1 for component agent_1+agent_2 is waiting for: agent_2
+
+WHY THIS MATTERS
+  Another agent or the base branch already owns part of this change.
+  Committing it unchanged would produce an inconsistent repository state.
+
+RESOLUTION
+  1. Inspect barrier participants and status.
+       sp barrier status
+  2. Retry the original commit after the barrier releases or the deadline degrades to FCFS.
+       git commit -m "<your original message>"
+
+RETRY CONTRACT
+  mode: rerun_original_command
+  validation: automatic_on_retry
+  max_attempts: 3
+  idempotent: true
+
+FORBIDDEN
+  - git commit --no-verify
+  - editing .scratchpost state
+  - force-pushing another agent branch
+
+SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_BARRIER_WAIT","conflict_id":"03431febb8580003","operation":"git.commit","agent":"agent_1","repo":"multiple","branch":"session","base_oid":"","head_oid":"","paths":[],"evidence":{"kind":"barrier_wait","rule":null,"namespace":null,"path":null,"line":null,"requested":null,"holder":null,"holder_intent":null,"lowest_free":null,"base_oid":null,"target_oid":null,"conflicting_paths":[],"detail":"barrier 1 for component agent_1+agent_2 is waiting for: agent_2"},"resolution":{"summary":"Wait for the active coordination barrier, then retry the commit.","steps":[{"ordinal":1,"action":"Inspect barrier participants and status.","command":"sp barrier status"},{"ordinal":2,"action":"Retry the original commit after the barrier releases or the deadline degrades to FCFS.","command":"git commit -m \"<your original message>\""}],"safe_retry_command":null,"forbidden_actions":["git commit --no-verify","editing .scratchpost state","force-pushing another agent branch"]},"retry":{"mode":"rerun_original_command","idempotent":true,"retry_after_ms":null,"max_attempts":3,"validation":"automatic_on_retry"}}
+
+Exit status: 1

@@ -1,0 +1,9 @@
+=== CONTROL 2: silent Liquibase sequence collision ===
+git merge feat/agent-1 exit=0
+  Auto-merging src/main/resources/db/dbchangelog.xml
+  Merge made by the 'ort' strategy.
+   src/main/resources/db/dbchangelog.xml | 3 +++
+   1 file changed, 3 insertions(+)
+duplicate changeSet id=200 occurrences after merge: 2
+RESULT: merge reported ZERO conflicts while the Liquibase changelog now has two id=200 changeSets.
+        Liquibase will fail at deploy time (or silently skip one migration).

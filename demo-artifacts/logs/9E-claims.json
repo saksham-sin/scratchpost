@@ -1,0 +1,1578 @@
+{
+  "barrier": {
+    "arrived": [],
+    "barrier_id": 0,
+    "component": "",
+    "deadline_ms": 0,
+    "open": false,
+    "opened_ms": 0,
+    "participants": [],
+    "released": false
+  },
+  "barriers": [],
+  "claims": [
+    {
+      "agent": "agent_1",
+      "claim_id": 1,
+      "commit_oid": "6abad911502607353ecf47a729246e4a47fd7213",
+      "created_ms": 1794852970587,
+      "expires_ms": 1794853030587,
+      "key": "200",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 200,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "dead19e1ad04171d00aa7524dbdff0a3",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_1-1a1e5922404",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_2",
+      "claim_id": 2,
+      "commit_oid": "2ca3a815e7be5695a46aee1e763c35c6c0f61a17",
+      "created_ms": 1794852972436,
+      "expires_ms": 1794853032436,
+      "key": "201",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 201,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "4cdc8a3fb23290f284f685997fbbad06",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_2-1a1e592230a",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_3",
+      "claim_id": 3,
+      "commit_oid": "9412d7e4c94ba8d6bf3d517e88084cded83dd630",
+      "created_ms": 1794852972704,
+      "expires_ms": 1794853032704,
+      "key": "202",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 202,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "eceb7b16b83031afd5b2e4b66cbf34f0",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_3-1a1e592221f",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_4",
+      "claim_id": 4,
+      "commit_oid": "25805eca6aad70e92ef9decaab61ef76a442f47f",
+      "created_ms": 1794852972982,
+      "expires_ms": 1794853032982,
+      "key": "203",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 203,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "57904a8a664b048216fc64660b07cf22",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_4-1a1e5922117",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_5",
+      "claim_id": 5,
+      "commit_oid": "60b5530f83d97cebe90eb403dd1e03099501f125",
+      "created_ms": 1794852973244,
+      "expires_ms": 1794853033244,
+      "key": "204",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 204,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "ba03beed077fdff1604e7ebd12760ecd",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_5-1a1e5922016",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_6",
+      "claim_id": 6,
+      "commit_oid": "1cf25f85ad136859df29ed825506b8d3335fbba0",
+      "created_ms": 1794852973516,
+      "expires_ms": 1794853033516,
+      "key": "205",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 205,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "c12fc96f182c8be3995e78fc06891448",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_6-1a1e5922f16",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_7",
+      "claim_id": 7,
+      "commit_oid": "61cb626cabdf8b669548be484d2c4b05a273cc16",
+      "created_ms": 1794852973818,
+      "expires_ms": 1794853033818,
+      "key": "206",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 206,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "1c40aab8bb8739b117c238ce93334462",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_7-1a1e5922e2c",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_8",
+      "claim_id": 8,
+      "commit_oid": "6a64990ec6bcfb97e6d5ced2e7a053dc8ebb9ec6",
+      "created_ms": 1794852974082,
+      "expires_ms": 1794853034082,
+      "key": "207",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 207,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "872b67aabf3be964bd188babf475d6f5",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_8-1a1e5922d2d",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_9",
+      "claim_id": 9,
+      "commit_oid": "aa522891becda17ea0aa1461b484046d6a0bfd0c",
+      "created_ms": 1794852974360,
+      "expires_ms": 1794853034360,
+      "key": "208",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 208,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "0a4aa6ae4dea93445c73891063578d37",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_9-1a1e5922c29",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_10",
+      "claim_id": 10,
+      "commit_oid": "e36858a250fcd827920cb413b80e34553491c30b",
+      "created_ms": 1794852974630,
+      "expires_ms": 1794853034630,
+      "key": "209",
+      "line": 11,
+      "namespace": "auth-service:src/main/resources/db/dbchangelog.xml",
+      "numeric": 209,
+      "path": "src/main/resources/db/dbchangelog.xml",
+      "permit_id": "8045651b1c0609cce2f9ddbbe0bc1c40",
+      "repo": "auth-service",
+      "rule": "liquibase.changeset_id",
+      "session_id": "agent_10-1a1e5922b2c",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_1",
+      "claim_id": 11,
+      "commit_oid": "7b92d907581df67a39393e3b0ff7448c4123a3c4",
+      "created_ms": 1794852975339,
+      "expires_ms": 1794853035339,
+      "key": "101",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 101,
+      "path": "src/main/resources/db/migration/V101__agent_1.sql",
+      "permit_id": "8053b36cd80a41a17c265dbc69680e7c",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_1-1a1e5922404",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_2",
+      "claim_id": 12,
+      "commit_oid": "e3b6eb3545afd4823822ece7d52147873e6836d3",
+      "created_ms": 1794852975755,
+      "expires_ms": 1794853035755,
+      "key": "102",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 102,
+      "path": "src/main/resources/db/migration/V102__agent_2.sql",
+      "permit_id": "d3943516dd37453b2ce9f4b89135cf91",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_2-1a1e592230a",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_3",
+      "claim_id": 13,
+      "commit_oid": "ab52cc1bf0c42bed1e4b22748a12086e7b2a0bb6",
+      "created_ms": 1794852976166,
+      "expires_ms": 1794853036166,
+      "key": "103",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 103,
+      "path": "src/main/resources/db/migration/V103__agent_3.sql",
+      "permit_id": "a08f63e889362b55b18e0a49ef87a837",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_3-1a1e592221f",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_4",
+      "claim_id": 14,
+      "commit_oid": "fb17a1800bef926c970f39dc38c7507d42be0d70",
+      "created_ms": 1794852976586,
+      "expires_ms": 1794853036586,
+      "key": "104",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 104,
+      "path": "src/main/resources/db/migration/V104__agent_4.sql",
+      "permit_id": "35447df54b7af32ecb6ffde249f11934",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_4-1a1e5922117",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_5",
+      "claim_id": 15,
+      "commit_oid": "dd80328b9b0d005e2f3326f27ee257ba1b7b2dd1",
+      "created_ms": 1794852977008,
+      "expires_ms": 1794853037008,
+      "key": "105",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 105,
+      "path": "src/main/resources/db/migration/V105__agent_5.sql",
+      "permit_id": "99e812e1e503f3112b9e32f1ef6131d5",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_5-1a1e5922016",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_6",
+      "claim_id": 16,
+      "commit_oid": "6448f037e0c6436188da4062c62e659fd85ecdaf",
+      "created_ms": 1794852977422,
+      "expires_ms": 1794853037422,
+      "key": "106",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 106,
+      "path": "src/main/resources/db/migration/V106__agent_6.sql",
+      "permit_id": "429636934b8ad54d823fd68930a02fa6",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_6-1a1e5922f16",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_7",
+      "claim_id": 17,
+      "commit_oid": "8a8b167296ef4125786d3e63ef1ea81c499bfedd",
+      "created_ms": 1794852977879,
+      "expires_ms": 1794853037879,
+      "key": "107",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 107,
+      "path": "src/main/resources/db/migration/V107__agent_7.sql",
+      "permit_id": "5486c66006acbeade3861be989d4107a",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_7-1a1e5922e2c",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_8",
+      "claim_id": 18,
+      "commit_oid": "4d346cb5eb684b2ad317ea9fe9550cd9dd5b7e6a",
+      "created_ms": 1794852978341,
+      "expires_ms": 1794853038341,
+      "key": "108",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 108,
+      "path": "src/main/resources/db/migration/V108__agent_8.sql",
+      "permit_id": "92dec5905d0a5d1f65b0eed07ef056cb",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_8-1a1e5922d2d",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_9",
+      "claim_id": 19,
+      "commit_oid": "77d582c715eb659b9b34c5855f50dc6bdb20af05",
+      "created_ms": 1794852978743,
+      "expires_ms": 1794853038743,
+      "key": "109",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 109,
+      "path": "src/main/resources/db/migration/V109__agent_9.sql",
+      "permit_id": "07b9f75891638ca1b9def2f85b281555",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_9-1a1e5922c29",
+      "state": "committed"
+    },
+    {
+      "agent": "agent_10",
+      "claim_id": 20,
+      "commit_oid": "f7d27cf9db5279f931ccf8adbf0d6fe390756139",
+      "created_ms": 1794852979147,
+      "expires_ms": 1794853039147,
+      "key": "110",
+      "line": 1,
+      "namespace": "payment-service:src/main/resources/db/migration",
+      "numeric": 110,
+      "path": "src/main/resources/db/migration/V110__agent_10.sql",
+      "permit_id": "cdaff7fd29ec55228c481d6a0d57811b",
+      "repo": "payment-service",
+      "rule": "flyway.versioned_migration",
+      "session_id": "agent_10-1a1e5922b2c",
+      "state": "committed"
+    }
+  ],
+  "components": [],
+  "config": {
+    "barrier_scope": "workspace",
+    "barrier_timeout_ms": 20000,
+    "lease_timeout_ms": 300000,
+    "max_sessions": 32,
+    "mode": "fcfs",
+    "port_band_width": 100,
+    "port_base_start": 31000,
+    "ui_port": 19200
+  },
+  "daemon_pid": 63245,
+  "generation": 236,
+  "intents": [
+    {
+      "agent": "agent_1",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_1/1a1e5922404",
+      "created_ms": 1794852970590,
+      "index_tree": "67d134d00fd41118b267780353db33d59edbad99",
+      "intent_id": 1,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "dead19e1ad04171d00aa7524dbdff0a3",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_2",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_2/1a1e592230a",
+      "created_ms": 1794852972440,
+      "index_tree": "99c94d3bb3cafc78381307ac986a66822b344857",
+      "intent_id": 2,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "4cdc8a3fb23290f284f685997fbbad06",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_3",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_3/1a1e592221f",
+      "created_ms": 1794852972707,
+      "index_tree": "c750b31f98279319d2f96b68f2e5e76806fb0e84",
+      "intent_id": 3,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "eceb7b16b83031afd5b2e4b66cbf34f0",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_4",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_4/1a1e5922117",
+      "created_ms": 1794852972986,
+      "index_tree": "8236a9aac44118e3964093e955700cce7242d9b3",
+      "intent_id": 4,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "57904a8a664b048216fc64660b07cf22",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_5",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_5/1a1e5922016",
+      "created_ms": 1794852973247,
+      "index_tree": "0ab86de7da7111a183f24dda2b61b0073da2e110",
+      "intent_id": 5,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "ba03beed077fdff1604e7ebd12760ecd",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_6",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_6/1a1e5922f16",
+      "created_ms": 1794852973520,
+      "index_tree": "5c36f402ed062c08512b98a52cf3a2d2407982eb",
+      "intent_id": 6,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "c12fc96f182c8be3995e78fc06891448",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_7",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_7/1a1e5922e2c",
+      "created_ms": 1794852973822,
+      "index_tree": "ba6e8bc151886fa7ab9a9e548ec689c7abe63671",
+      "intent_id": 7,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "1c40aab8bb8739b117c238ce93334462",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_8",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_8/1a1e5922d2d",
+      "created_ms": 1794852974085,
+      "index_tree": "a5f2442411c4f93c163fcfbbb8556427ed1481e1",
+      "intent_id": 8,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "872b67aabf3be964bd188babf475d6f5",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_9",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_9/1a1e5922c29",
+      "created_ms": 1794852974364,
+      "index_tree": "c1b80d1c6bbe72229e465bfa93835ef7b4983dc2",
+      "intent_id": 9,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "0a4aa6ae4dea93445c73891063578d37",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_10",
+      "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+      "branch": "sp/agent_10/1a1e5922b2c",
+      "created_ms": 1794852974633,
+      "index_tree": "6e925d7ec7aacde1edcb5dcf0bd362e53a85665c",
+      "intent_id": 10,
+      "paths": [
+        "src/main/resources/db/dbchangelog.xml"
+      ],
+      "permit_id": "8045651b1c0609cce2f9ddbbe0bc1c40",
+      "repo": "auth-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_1",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_1/1a1e5922404",
+      "created_ms": 1794852975342,
+      "index_tree": "56a6db57cc8f1f4bfb8756cf647f6612e90f3132",
+      "intent_id": 11,
+      "paths": [
+        "src/main/resources/db/migration/V101__agent_1.sql"
+      ],
+      "permit_id": "8053b36cd80a41a17c265dbc69680e7c",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_2",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_2/1a1e592230a",
+      "created_ms": 1794852975759,
+      "index_tree": "d2b1ff8114d0b8c98fd1b85c030f4bd7f527e085",
+      "intent_id": 12,
+      "paths": [
+        "src/main/resources/db/migration/V102__agent_2.sql"
+      ],
+      "permit_id": "d3943516dd37453b2ce9f4b89135cf91",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_3",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_3/1a1e592221f",
+      "created_ms": 1794852976169,
+      "index_tree": "174d095cb7d0c31e90d29d502c2a8f8f23d63954",
+      "intent_id": 13,
+      "paths": [
+        "src/main/resources/db/migration/V103__agent_3.sql"
+      ],
+      "permit_id": "a08f63e889362b55b18e0a49ef87a837",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_4",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_4/1a1e5922117",
+      "created_ms": 1794852976590,
+      "index_tree": "1c185fd6ae10e153e8c70b423f1e8c1a28f8e33e",
+      "intent_id": 14,
+      "paths": [
+        "src/main/resources/db/migration/V104__agent_4.sql"
+      ],
+      "permit_id": "35447df54b7af32ecb6ffde249f11934",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_5",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_5/1a1e5922016",
+      "created_ms": 1794852977013,
+      "index_tree": "c67bf3e2a45f10edd50c3f584500916372d5cdec",
+      "intent_id": 15,
+      "paths": [
+        "src/main/resources/db/migration/V105__agent_5.sql"
+      ],
+      "permit_id": "99e812e1e503f3112b9e32f1ef6131d5",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_6",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_6/1a1e5922f16",
+      "created_ms": 1794852977425,
+      "index_tree": "9ac044dbbf4aa53263d7c4af1ea0a2aac07e73ab",
+      "intent_id": 16,
+      "paths": [
+        "src/main/resources/db/migration/V106__agent_6.sql"
+      ],
+      "permit_id": "429636934b8ad54d823fd68930a02fa6",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_7",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_7/1a1e5922e2c",
+      "created_ms": 1794852977883,
+      "index_tree": "ecaff23891b911f1de6e81a75c504eb0c1b09ea9",
+      "intent_id": 17,
+      "paths": [
+        "src/main/resources/db/migration/V107__agent_7.sql"
+      ],
+      "permit_id": "5486c66006acbeade3861be989d4107a",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_8",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_8/1a1e5922d2d",
+      "created_ms": 1794852978345,
+      "index_tree": "73ccbc87572f7c75f31bd4869343b4ff189c7ec5",
+      "intent_id": 18,
+      "paths": [
+        "src/main/resources/db/migration/V108__agent_8.sql"
+      ],
+      "permit_id": "92dec5905d0a5d1f65b0eed07ef056cb",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_9",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_9/1a1e5922c29",
+      "created_ms": 1794852978746,
+      "index_tree": "e6238440b677dacff33a24760ffe178d18ca9015",
+      "intent_id": 19,
+      "paths": [
+        "src/main/resources/db/migration/V109__agent_9.sql"
+      ],
+      "permit_id": "07b9f75891638ca1b9def2f85b281555",
+      "repo": "payment-service",
+      "status": "committed"
+    },
+    {
+      "agent": "agent_10",
+      "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+      "branch": "sp/agent_10/1a1e5922b2c",
+      "created_ms": 1794852979150,
+      "index_tree": "dc0a9f521672c70b3ed00684769bc1dbbac82de8",
+      "intent_id": 20,
+      "paths": [
+        "src/main/resources/db/migration/V110__agent_10.sql"
+      ],
+      "permit_id": "cdaff7fd29ec55228c481d6a0d57811b",
+      "repo": "payment-service",
+      "status": "committed"
+    }
+  ],
+  "master_root": "/private/tmp/sp-ten-agent-sim",
+  "notices": [
+    {
+      "agent": null,
+      "created_ms": 1794852967153,
+      "kind": "daemon-started",
+      "message": "daemon started for /private/tmp/sp-ten-agent-sim",
+      "seq": 1,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852967392,
+      "kind": "session-active",
+      "message": "agent agent_1 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace with port base 31000",
+      "seq": 2,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852967657,
+      "kind": "session-active",
+      "message": "agent agent_2 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace with port base 31100",
+      "seq": 3,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852967915,
+      "kind": "session-active",
+      "message": "agent agent_3 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace with port base 31200",
+      "seq": 4,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852968174,
+      "kind": "session-active",
+      "message": "agent agent_4 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace with port base 31300",
+      "seq": 5,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852968431,
+      "kind": "session-active",
+      "message": "agent agent_5 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace with port base 31400",
+      "seq": 6,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852968692,
+      "kind": "session-active",
+      "message": "agent agent_6 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace with port base 31500",
+      "seq": 7,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852968949,
+      "kind": "session-active",
+      "message": "agent agent_7 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace with port base 31600",
+      "seq": 8,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852969205,
+      "kind": "session-active",
+      "message": "agent agent_8 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace with port base 31700",
+      "seq": 9,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852969464,
+      "kind": "session-active",
+      "message": "agent agent_9 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace with port base 31800",
+      "seq": 10,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852969718,
+      "kind": "session-active",
+      "message": "agent agent_10 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace with port base 31900",
+      "seq": 11,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852970594,
+      "kind": "commit-permit",
+      "message": "commit permit dead19e1ad04171d00aa7524dbdff0a3 issued for auth-service (1 sequence claim(s))",
+      "seq": 12,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852970793,
+      "kind": "mutation-published",
+      "message": "agent agent_1 committed auth-service (6abad911502607353ecf47a729246e4a47fd7213); peers must rebase before publication",
+      "seq": 13,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852970942,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 14,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852971102,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 15,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852971260,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 16,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852971420,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 17,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852971578,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 18,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852971732,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 19,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852971889,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 20,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852972048,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 21,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852972204,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 22,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852972316,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it",
+      "seq": 23,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852972444,
+      "kind": "commit-permit",
+      "message": "commit permit 4cdc8a3fb23290f284f685997fbbad06 issued for auth-service (1 sequence claim(s))",
+      "seq": 24,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852972498,
+      "kind": "mutation-published",
+      "message": "agent agent_2 committed auth-service (2ca3a815e7be5695a46aee1e763c35c6c0f61a17); peers must rebase before publication",
+      "seq": 25,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852972585,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_3 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 202 and staged it",
+      "seq": 26,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852972711,
+      "kind": "commit-permit",
+      "message": "commit permit eceb7b16b83031afd5b2e4b66cbf34f0 issued for auth-service (1 sequence claim(s))",
+      "seq": 27,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852972761,
+      "kind": "mutation-published",
+      "message": "agent agent_3 committed auth-service (9412d7e4c94ba8d6bf3d517e88084cded83dd630); peers must rebase before publication",
+      "seq": 28,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852972868,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_4 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 203 and staged it",
+      "seq": 29,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852972989,
+      "kind": "commit-permit",
+      "message": "commit permit 57904a8a664b048216fc64660b07cf22 issued for auth-service (1 sequence claim(s))",
+      "seq": 30,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852973039,
+      "kind": "mutation-published",
+      "message": "agent agent_4 committed auth-service (25805eca6aad70e92ef9decaab61ef76a442f47f); peers must rebase before publication",
+      "seq": 31,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852973125,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_5 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 204 and staged it",
+      "seq": 32,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852973250,
+      "kind": "commit-permit",
+      "message": "commit permit ba03beed077fdff1604e7ebd12760ecd issued for auth-service (1 sequence claim(s))",
+      "seq": 33,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852973300,
+      "kind": "mutation-published",
+      "message": "agent agent_5 committed auth-service (60b5530f83d97cebe90eb403dd1e03099501f125); peers must rebase before publication",
+      "seq": 34,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852973389,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_6 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 205 and staged it",
+      "seq": 35,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852973524,
+      "kind": "commit-permit",
+      "message": "commit permit c12fc96f182c8be3995e78fc06891448 issued for auth-service (1 sequence claim(s))",
+      "seq": 36,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852973574,
+      "kind": "mutation-published",
+      "message": "agent agent_6 committed auth-service (1cf25f85ad136859df29ed825506b8d3335fbba0); peers must rebase before publication",
+      "seq": 37,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852973694,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_7 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 206 and staged it",
+      "seq": 38,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852973826,
+      "kind": "commit-permit",
+      "message": "commit permit 1c40aab8bb8739b117c238ce93334462 issued for auth-service (1 sequence claim(s))",
+      "seq": 39,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852973876,
+      "kind": "mutation-published",
+      "message": "agent agent_7 committed auth-service (61cb626cabdf8b669548be484d2c4b05a273cc16); peers must rebase before publication",
+      "seq": 40,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852973959,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_8 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 207 and staged it",
+      "seq": 41,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852974089,
+      "kind": "commit-permit",
+      "message": "commit permit 872b67aabf3be964bd188babf475d6f5 issued for auth-service (1 sequence claim(s))",
+      "seq": 42,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852974139,
+      "kind": "mutation-published",
+      "message": "agent agent_8 committed auth-service (6a64990ec6bcfb97e6d5ced2e7a053dc8ebb9ec6); peers must rebase before publication",
+      "seq": 43,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852974229,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_9 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 208 and staged it",
+      "seq": 44,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852974367,
+      "kind": "commit-permit",
+      "message": "commit permit 0a4aa6ae4dea93445c73891063578d37 issued for auth-service (1 sequence claim(s))",
+      "seq": 45,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852974421,
+      "kind": "mutation-published",
+      "message": "agent agent_9 committed auth-service (aa522891becda17ea0aa1461b484046d6a0bfd0c); peers must rebase before publication",
+      "seq": 46,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852974504,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_10 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 209 and staged it",
+      "seq": 47,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852974637,
+      "kind": "commit-permit",
+      "message": "commit permit 8045651b1c0609cce2f9ddbbe0bc1c40 issued for auth-service (1 sequence claim(s))",
+      "seq": 48,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852974688,
+      "kind": "mutation-published",
+      "message": "agent agent_10 committed auth-service (e36858a250fcd827920cb413b80e34553491c30b); peers must rebase before publication",
+      "seq": 49,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852975346,
+      "kind": "commit-permit",
+      "message": "commit permit 8053b36cd80a41a17c265dbc69680e7c issued for payment-service (1 sequence claim(s))",
+      "seq": 50,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852975400,
+      "kind": "mutation-published",
+      "message": "agent agent_1 committed payment-service (7b92d907581df67a39393e3b0ff7448c4123a3c4); peers must rebase before publication",
+      "seq": 51,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852975552,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 52,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852975763,
+      "kind": "commit-permit",
+      "message": "commit permit d3943516dd37453b2ce9f4b89135cf91 issued for payment-service (1 sequence claim(s))",
+      "seq": 53,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852975817,
+      "kind": "mutation-published",
+      "message": "agent agent_2 committed payment-service (e3b6eb3545afd4823822ece7d52147873e6836d3); peers must rebase before publication",
+      "seq": 54,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852975971,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 55,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852976172,
+      "kind": "commit-permit",
+      "message": "commit permit a08f63e889362b55b18e0a49ef87a837 issued for payment-service (1 sequence claim(s))",
+      "seq": 56,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852976230,
+      "kind": "mutation-published",
+      "message": "agent agent_3 committed payment-service (ab52cc1bf0c42bed1e4b22748a12086e7b2a0bb6); peers must rebase before publication",
+      "seq": 57,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852976380,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 58,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852976594,
+      "kind": "commit-permit",
+      "message": "commit permit 35447df54b7af32ecb6ffde249f11934 issued for payment-service (1 sequence claim(s))",
+      "seq": 59,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852976655,
+      "kind": "mutation-published",
+      "message": "agent agent_4 committed payment-service (fb17a1800bef926c970f39dc38c7507d42be0d70); peers must rebase before publication",
+      "seq": 60,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852976812,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 61,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852977017,
+      "kind": "commit-permit",
+      "message": "commit permit 99e812e1e503f3112b9e32f1ef6131d5 issued for payment-service (1 sequence claim(s))",
+      "seq": 62,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852977073,
+      "kind": "mutation-published",
+      "message": "agent agent_5 committed payment-service (dd80328b9b0d005e2f3326f27ee257ba1b7b2dd1); peers must rebase before publication",
+      "seq": 63,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852977224,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 64,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852977429,
+      "kind": "commit-permit",
+      "message": "commit permit 429636934b8ad54d823fd68930a02fa6 issued for payment-service (1 sequence claim(s))",
+      "seq": 65,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852977482,
+      "kind": "mutation-published",
+      "message": "agent agent_6 committed payment-service (6448f037e0c6436188da4062c62e659fd85ecdaf); peers must rebase before publication",
+      "seq": 66,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852977669,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 67,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852977885,
+      "kind": "commit-permit",
+      "message": "commit permit 5486c66006acbeade3861be989d4107a issued for payment-service (1 sequence claim(s))",
+      "seq": 68,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852977945,
+      "kind": "mutation-published",
+      "message": "agent agent_7 committed payment-service (8a8b167296ef4125786d3e63ef1ea81c499bfedd); peers must rebase before publication",
+      "seq": 69,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852978140,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 70,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852978349,
+      "kind": "commit-permit",
+      "message": "commit permit 92dec5905d0a5d1f65b0eed07ef056cb issued for payment-service (1 sequence claim(s))",
+      "seq": 71,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852978401,
+      "kind": "mutation-published",
+      "message": "agent agent_8 committed payment-service (4d346cb5eb684b2ad317ea9fe9550cd9dd5b7e6a); peers must rebase before publication",
+      "seq": 72,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852978548,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 73,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852978750,
+      "kind": "commit-permit",
+      "message": "commit permit 07b9f75891638ca1b9def2f85b281555 issued for payment-service (1 sequence claim(s))",
+      "seq": 74,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852978800,
+      "kind": "mutation-published",
+      "message": "agent agent_9 committed payment-service (77d582c715eb659b9b34c5855f50dc6bdb20af05); peers must rebase before publication",
+      "seq": 75,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852978953,
+      "kind": "commit-blocked",
+      "message": "101 is reserved by agent_1 for payment-service:src/main/resources/db/migration",
+      "seq": 76,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852979153,
+      "kind": "commit-permit",
+      "message": "commit permit cdaff7fd29ec55228c481d6a0d57811b issued for payment-service (1 sequence claim(s))",
+      "seq": 77,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852979206,
+      "kind": "mutation-published",
+      "message": "agent agent_10 committed payment-service (f7d27cf9db5279f931ccf8adbf0d6fe390756139); peers must rebase before publication",
+      "seq": 78,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852979271,
+      "kind": "path-claimed",
+      "message": "agent agent_1 claimed auth-service:src/main/java/com/demo/auth/User.java (mandatory)",
+      "seq": 79,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852979301,
+      "kind": "path-claimed",
+      "message": "agent agent_2 claimed auth-service:src/main/java/com/demo/auth/User.java (advisory)",
+      "seq": 80,
+      "severity": "info"
+    }
+  ],
+  "path_claims": [
+    {
+      "agent": "agent_1",
+      "claim_id": 1,
+      "created_ms": 1794852979268,
+      "expires_ms": 1794853279268,
+      "note": "agent_1 owns User.java",
+      "path": "src/main/java/com/demo/auth/User.java",
+      "repo": "auth-service",
+      "strength": "mandatory"
+    },
+    {
+      "agent": "agent_2",
+      "claim_id": 2,
+      "created_ms": 1794852979298,
+      "expires_ms": 1794853279298,
+      "note": "agent_2 reads User.java",
+      "path": "src/main/java/com/demo/auth/User.java",
+      "repo": "auth-service",
+      "strength": "advisory"
+    }
+  ],
+  "sessions": [
+    {
+      "agent": "agent_1",
+      "created_ms": 1794852967384,
+      "last_heartbeat_ms": 1794852975412,
+      "port_base": 31000,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_1/1a1e5922404",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_1/1a1e5922404",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_1-1a1e5922404",
+      "slot": 1,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace"
+    },
+    {
+      "agent": "agent_10",
+      "created_ms": 1794852969709,
+      "last_heartbeat_ms": 1794852979224,
+      "port_base": 31900,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_10/1a1e5922b2c",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_10/1a1e5922b2c",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_10-1a1e5922b2c",
+      "slot": 10,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794852967648,
+      "last_heartbeat_ms": 1794852975833,
+      "port_base": 31100,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_2/1a1e592230a",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_2/1a1e592230a",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_2-1a1e592230a",
+      "slot": 2,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794852967907,
+      "last_heartbeat_ms": 1794852976250,
+      "port_base": 31200,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_3/1a1e592221f",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_3/1a1e592221f",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_3-1a1e592221f",
+      "slot": 3,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794852968167,
+      "last_heartbeat_ms": 1794852976673,
+      "port_base": 31300,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_4/1a1e5922117",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_4/1a1e5922117",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_4-1a1e5922117",
+      "slot": 4,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794852968423,
+      "last_heartbeat_ms": 1794852977090,
+      "port_base": 31400,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_5/1a1e5922016",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_5/1a1e5922016",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_5-1a1e5922016",
+      "slot": 5,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794852968684,
+      "last_heartbeat_ms": 1794852977498,
+      "port_base": 31500,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_6/1a1e5922f16",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_6/1a1e5922f16",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_6-1a1e5922f16",
+      "slot": 6,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace"
+    },
+    {
+      "agent": "agent_7",
+      "created_ms": 1794852968941,
+      "last_heartbeat_ms": 1794852977964,
+      "port_base": 31600,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_7/1a1e5922e2c",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_7/1a1e5922e2c",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_7-1a1e5922e2c",
+      "slot": 7,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace"
+    },
+    {
+      "agent": "agent_8",
+      "created_ms": 1794852969197,
+      "last_heartbeat_ms": 1794852978413,
+      "port_base": 31700,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_8/1a1e5922d2d",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_8/1a1e5922d2d",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_8-1a1e5922d2d",
+      "slot": 8,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace"
+    },
+    {
+      "agent": "agent_9",
+      "created_ms": 1794852969456,
+      "last_heartbeat_ms": 1794852978819,
+      "port_base": 31800,
+      "repos": [
+        {
+          "base_oid": "af2cbf2cc9db22779637a02600f0712c9dd67c65",
+          "branch": "sp/agent_9/1a1e5922c29",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace/auth-service"
+        },
+        {
+          "base_oid": "790863959f2dec3000926fa5de6143296e502d5d",
+          "branch": "sp/agent_9/1a1e5922c29",
+          "name": "payment-service",
+          "relative_path": "payment-service",
+          "worktree": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace/payment-service"
+        }
+      ],
+      "session_id": "agent_9-1a1e5922c29",
+      "slot": 9,
+      "status": "active",
+      "workspace": "/private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace"
+    }
+  ],
+  "started_ms": 1794852967145
+}

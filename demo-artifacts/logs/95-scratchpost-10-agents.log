@@ -1,0 +1,45 @@
+=== SEQUENCE GATING: 10 agents race for changeSet id=200 ===
+agent_1 committed changeSet id=200 (exit 0) — 200 is now locked in the ledger
+agent_2 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_3 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_4 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_5 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_6 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_7 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_8 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_9 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+agent_10 blocked: SP_SEQUENCE_COLLISION on id=200 (exit 1)
+
+=== SELF-CORRECTION: agents 2..10 resequence and retry ===
+agent_2 resequenced 200 -> 201 and committed (exit 0)
+agent_3 resequenced 200 -> 202 and committed (exit 0)
+agent_4 resequenced 200 -> 203 and committed (exit 0)
+agent_5 resequenced 200 -> 204 and committed (exit 0)
+agent_6 resequenced 200 -> 205 and committed (exit 0)
+agent_7 resequenced 200 -> 206 and committed (exit 0)
+agent_8 resequenced 200 -> 207 and committed (exit 0)
+agent_9 resequenced 200 -> 208 and committed (exit 0)
+agent_10 resequenced 200 -> 209 and committed (exit 0)
+
+=== FLYWAY GATING: 10 agents race for V101 ===
+agent_1 committed Flyway V101 (exit 0)
+agent_2 blocked on V101, renamed to V102, committed (exit 0)
+agent_3 blocked on V101, renamed to V103, committed (exit 0)
+agent_4 blocked on V101, renamed to V104, committed (exit 0)
+agent_5 blocked on V101, renamed to V105, committed (exit 0)
+agent_6 blocked on V101, renamed to V106, committed (exit 0)
+agent_7 blocked on V101, renamed to V107, committed (exit 0)
+agent_8 blocked on V101, renamed to V108, committed (exit 0)
+agent_9 blocked on V101, renamed to V109, committed (exit 0)
+agent_10 blocked on V101, renamed to V110, committed (exit 0)
+
+=== PATH CLAIMS: advisory + mandatory claims on a shared file ===
+agent_1 holds a mandatory claim on User.java; agent_2 an advisory claim
+direct /opt/homebrew/bin/git commit rejected by managed core.hooksPath (exit 1)
+
+=== BARRIER CONTENTION: three agents converge on auth-service ===
+agent_2 parked at the auth-service component barrier (SP_BARRIER_WAIT)
+agent_3 parked at the auth-service component barrier (SP_BARRIER_WAIT)
+operator released the barrier; all three agents proceed
+  migration validation passed: all sequence numbers unique
+post-merge migration validator exit=0 — main is valid

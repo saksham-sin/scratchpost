@@ -1,0 +1,14 @@
+SP_NOTICE v1 seq=79 severity=info kind=path-claimed agent=agent_1 message=agent agent_1 claimed auth-service:src/main/java/com/demo/auth/User.java (mandatory)
+{
+  "claim": {
+    "agent": "agent_2",
+    "claim_id": 2,
+    "created_ms": 1794852979298,
+    "expires_ms": 1794853279298,
+    "note": "agent_2 reads User.java",
+    "path": "src/main/java/com/demo/auth/User.java",
+    "repo": "auth-service",
+    "strength": "advisory"
+  },
+  "created": true
+}

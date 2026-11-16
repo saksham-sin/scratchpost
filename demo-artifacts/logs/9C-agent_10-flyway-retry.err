@@ -1,0 +1,2 @@
+SP_NOTICE v1 seq=76 severity=blocking kind=commit-blocked agent=agent_10 message=101 is reserved by agent_1 for payment-service:src/main/resources/db/migration
+SP_NOTICE v1 seq=77 severity=info kind=commit-permit agent=agent_10 message=commit permit cdaff7fd29ec55228c481d6a0d57811b issued for payment-service (1 sequence claim(s))

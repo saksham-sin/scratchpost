@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScratchPost Mission Control</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#071018;--panel:#0d1b26;--panel2:#102535;--line:#203a4a;--text:#d8e8f0;--muted:#7f9aab;--accent:#5fd4c4;--warn:#e6b35c;--bad:#ef7b7b;--good:#71d49a}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 20% 0%,#102b3a 0,var(--bg) 50%);color:var(--text);font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:100vh}
+header{display:flex;align-items:center;gap:14px;padding:16px 24px;border-bottom:1px solid var(--line);background:rgba(7,16,24,.82);position:sticky;top:0;z-index:2}
+.mark{width:34px;height:34px;flex:0 0 auto;filter:drop-shadow(0 0 6px rgba(95,212,196,.35))}
+.mark path{fill:var(--accent)}
+h1{font-size:18px;letter-spacing:.08em;margin:0;color:var(--accent);text-transform:uppercase}
+header .sub{color:var(--muted)} header .mode{margin-left:auto;color:var(--warn)}
+main{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;padding:14px 18px;max-width:1600px;margin:0 auto}
+section{background:linear-gradient(180deg,var(--panel),#0a1621);border:1px solid var(--line);border-radius:10px;min-height:210px;overflow:hidden}
+section h2{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0;padding:12px 14px;border-bottom:1px solid var(--line);background:rgba(16,37,53,.55)}
+.body{padding:12px 14px;overflow:auto;max-height:640px}
+.lane{border-left:3px solid var(--accent);background:var(--panel2);padding:9px 10px;margin-bottom:8px;border-radius:3px}
+.lane.dead{border-left-color:var(--bad);opacity:.65}.lane.warn{border-left-color:var(--warn)}
+.lane .row{display:flex;gap:14px;flex-wrap:wrap}.lane .name{font-weight:700;color:var(--accent)}
+.k{color:var(--muted)} code{color:#bfe9e0}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #16303d;vertical-align:top}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:20px;padding:1px 8px;color:var(--muted);font-size:11px}
+.badge.active{color:var(--good);border-color:#2c6b4e}.badge.blocked{color:var(--bad);border-color:#7a3434}.badge.reserved{color:var(--warn);border-color:#6f5a2d}
+.empty{color:var(--muted);padding:12px 2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px}.controls button,.controls select,.controls input{background:#102a3a;color:var(--text);border:1px solid #2a5367;border-radius:5px;padding:7px 10px;font:inherit}.controls button:hover{border-color:var(--accent);color:var(--accent)}.controls button.danger:hover{border-color:var(--bad);color:var(--bad)}
+.graph{display:flex;gap:8px;flex-wrap:wrap}.component{border:1px dashed #37627a;border-radius:7px;padding:9px;min-width:190px;background:#0b1d2a}.component b{color:var(--warn)}.component .agents{color:var(--accent)}
+footer{color:var(--muted);padding:10px 24px 24px;text-align:center}
+@media(max-width:1000px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <svg class="mark" viewBox="-5 -10 110 118" aria-hidden="true"><path d="m91.148 26.148c-0.039063-0.17969-0.17188-0.71875-0.66016-1-2.4102-1.3906-18.059-4.4219-26.922-5.9883-16.09-2.8516-24.84-3.8594-26.031-3-2 1.4609-2.6406 12.219-2.8398 18.941-2.7812 0.64844-5.8594 1.9492-8.9297 4.3789-4.3008 3.3984-6.6719 10.031-5.6289 15.75 0.14062 0.78906 0.35156 1.5508 0.60938 2.2695-12.102 5.0586-12.039 6.6992-12.012 7.3203 0.03125 0.82031 0.070313 1.7617 21.699 10.699 0.21094 0.089844 21.02 8.6797 22.941 8.6719h0.019531c2.7305-0.10938 31.461-15.531 32.871-17.648 1.0703-1.6016 5.7695-36.488 4.8711-40.359zm-64.137 14.883c7.0195-5.5586 14.07-4.6719 16.578-4.1016-0.058594 0.12891-0.12109 0.26172-0.17969 0.37891-0.94922 0.71094-4.1094 3.4297-4.2305 8.5195-0.12109 4.8398 2.5508 6.7891 2.6719 6.8711 0.44922 0.32031 1.0586 0.21094 1.3789-0.23047 0.32031-0.44141 0.21875-1.0703-0.21875-1.3906-0.078125-0.058594-1.9219-1.4805-1.8281-5.1914 0.10938-4.7695 3.4297-6.9805 3.5703-7.0586 0.17188-0.10938 0.30078-0.26172 0.37891-0.44141 0.82813-1.8711 2.0391-3.7188 2.5195-3.8789 0.5-0.011718 1.9414 1.5508 2.9102 3.1602 0.17969 0.30078 0.5 0.48047 0.83984 0.48828 1.2109 0.019531 5.6719 0.12109 5.6719 0.12109 0.33984 0 0.67188-0.16016 0.85938-0.44922 0.94141-1.4414 2.3203-2.7695 2.8203-2.6484 0.53125 0.19141 1.4414 2.3906 1.8711 4.5312 0.050781 0.23828 0.19141 0.44922 0.37891 0.60156 0.10938 0.089844 2.7812 2.1719 2.5117 6.8594-0.19922 3.4688-2.5781 5.3086-2.6797 5.3906-0.44141 0.32812-0.53125 0.94922-0.19922 1.3984 0.19922 0.28125 0.53125 0.42187 0.85156 0.39844 0.14844 0 0.30859-0.058594 0.44922-0.14062 0.42188 1.25 0.75 3.6914-1.4609 6.3789-5.4688 6.6797-17.539 7.8398-32.301 3.1016-5.6602-1.8203-7.5117-5.8008-8.0508-8.8281-0.91016-5.0391 1.1484-10.852 4.8984-13.82zm39.09 13.641c-0.16016-0.89062-0.44141-1.5781-0.64062-1.9883 0.89844-1.1484 1.9102-2.9609 2.0508-5.4219 0.28125-4.8594-2.1211-7.5117-3-8.3203-0.39844-1.8281-1.4219-5.3516-3.3398-5.75-1.8516-0.37891-3.7188 1.8398-4.5898 3.0508-1.0508-0.019532-3.3516-0.078126-4.6016-0.10156-0.94922-1.4805-2.8008-3.9102-4.6211-3.6406-1.0195 0.14844-2.0117 1.3398-2.7812 2.5898-0.83984-0.21875-2.4609-0.55859-4.5781-0.58984 0.25-5.6484 0.71875-11.691 1.1719-13.379 4.6797 0.41016 39.328 7.0117 44.301 8.4297-0.10938 3.6797-2.8984 24.738-3.7305 29.328-2.9492-0.53906-13.57-3.4609-15.621-4.2188zm18.469 10.77c-2.0391 2.0703-28.68 16.34-31.16 16.711-2.1289-0.23828-37.352-14.309-42.359-17.551 1.3984-1.1484 6.1719-3.4805 10.52-5.3008 1.6211 2.9414 4.3398 5.1211 7.9688 6.2812 5.5195 1.7695 10.699 2.7305 15.359 2.9102 0.050781 0.03125 0.078124 0.070312 0.14062 0.089843 2.5586 0.98828 15.441 5.9297 17.512 5.8398 0.71094-0.03125 13.039-6.1016 13.93-7.6211 0.28125-0.46875 0.070312-1.1289-0.39844-1.4102-0.62891-0.37109-4.6289-1.6016-6.9609-2.3008-2.3789-0.71094-3.9219-1.1797-4.9609-1.4492 0.35156-0.44922 0.64062-0.89062 0.89062-1.3203 4.5391 1.2891 15.469 4.4492 16.891 5.1211 0.14844 0.070313 0.30859 0.10156 0.46875 0.089844 0.35938-0.011719 0.69922-0.21875 0.85938-0.57031 0.23047-0.5 0.019531-1.1016-0.48047-1.3281-1.7109-0.80859-13.762-4.2617-16.922-5.1602 0.17969-0.58984 0.28906-1.1602 0.32812-1.6914 3.9688 1.3008 14.66 4.2617 16.352 4.1797 0.050781 0 0.089844 0 0.12109-0.011719 0.28125-0.058594 0.57031-0.26172 0.71875-0.51172 0.35156-0.62109 2.0391-13.309 2.3789-15.84 2.0703-15.648 1.7812-15.98 1.3711-16.422-0.23047-0.25-0.69922-0.76953-23.34-5.1289-22.77-4.3789-23.359-4.0195-23.789-3.7617-0.5 0.30078-1.4102 0.87109-2.0195 15.281-0.41016 0.03125-0.83984 0.070313-1.2812 0.12891 0.25-7.4609 1.0508-15.68 1.9609-16.891 3.7305-0.71094 45.559 6.6992 50.57 8.9297 0.75 3.8281-3.8906 36.031-4.6719 38.699z"/>
+ <path d="m51.398 46.449c0.60937-0.03125 1.0898-0.53906 1.0703-1.1602-0.019531-0.62109-0.53906-1.0898-1.1602-1.0703s-1.0898 0.53906-1.0703 1.1602 0.53906 1.0898 1.1602 1.0703z"/>
+ <path d="m57.859 46.77c0.60938-0.03125 1.0898-0.53906 1.0703-1.1602-0.019532-0.62109-0.53906-1.0898-1.1602-1.0703-0.62109 0.019532-1.0898 0.53906-1.0703 1.1602 0.019531 0.62109 0.53906 1.0898 1.1602 1.0703z"/>
+ <path d="m17.422 37.039c0.21094 0.26953 0.51953 0.39844 0.82812 0.39063 0.19922 0 0.39844-0.078126 0.57031-0.21094 0.44141-0.33984 0.51172-0.96875 0.17969-1.3984-0.51953-0.67187-1.3398-1.4883-1.3711-1.5312-0.39062-0.39062-1.0195-0.39062-1.4102 0-0.39062 0.39063-0.39062 1.0195 0 1.4102 0 0 0.76953 0.76953 1.2109 1.3516z"/>
+ <path d="m23.59 33.238c0.16016 0.39844 0.55859 0.64062 0.96875 0.62109 0.10938 0 0.23047-0.03125 0.33984-0.070313 0.51172-0.21094 0.75-0.78906 0.55078-1.3086-0.28906-0.69922-0.55078-1.7383-0.55078-1.75-0.12891-0.53906-0.67969-0.85938-1.2109-0.73047-0.53906 0.12891-0.85938 0.67969-0.73047 1.2109 0.011719 0.050781 0.30078 1.1914 0.64062 2.0195z"/></svg>
+  <h1>ScratchPost</h1>
+  <span class="sub">multi-agent workspace mission control</span>
+  <span class="mode" id="mode">mode: ...</span>
+  <span class="mode" id="barrier">barrier: ...</span>
+</header>
+<main>
+  <section>
+    <h2>01 / Live Agent Lanes</h2>
+    <div class="body" id="lanes"><div class="empty">Loading sessions...</div></div>
+  </section>
+
+  <section>
+    <h2>02 / Mergeability Radar &amp; Conflict Components</h2>
+    <div class="body" id="radar"><div class="empty">Loading conflict graph...</div></div>
+  </section>
+
+  <section>
+    <h2>03 / Sequence Registry</h2>
+    <div class="body" id="sequences"><div class="empty">Loading sequence claims...</div></div>
+  </section>
+
+  <section>
+    <h2>04 / Human Override Controls</h2>
+    <div class="body">
+      <div class="controls">
+        <select id="modeSelect" aria-label="coordination mode">
+          <option value="fcfs">fcfs</option>
+          <option value="barrier-stacked">barrier-stacked</option>
+          <option value="barrier-integration">barrier-integration</option>
+        </select>
+        <button id="setMode">Set Mode</button>
+        <select id="scopeSelect" aria-label="barrier scope">
+          <option value="workspace">scope: workspace</option>
+          <option value="component">scope: component</option>
+        </select>
+        <button id="setScope">Set Scope</button>
+        <button id="releaseBarrier">Force Release Barrier</button>
+        <input id="evictAgent" placeholder="agent name" aria-label="agent name">
+        <button id="evict" class="danger">Evict Agent</button>
+      </div>
+      <div class="body" style="padding-top:12px">
+        <div class="k">Notices</div>
+        <div id="notices" class="empty">Waiting for daemon...</div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Local only. No external assets. Deterministic state, no LLM calls.<br>
+Cat icon by <a href="https://thenounproject.com/browse/icons/term/cat/" target="_blank" rel="noopener">inmyheart</a> from Noun Project (CC BY 3.0).</footer>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let last = null;
+
+function lane(s, intents){
+  const repos = (s.repos || []).map(r => `${esc(r.name)} @ ${esc(r.branch)}`).join('<br>');
+  const touched = (intents || []).filter(i => i.agent === s.agent && i.status === 'prepared')
+    .flatMap(i => (i.paths || []).map(p => `${i.repo}/${p}`));
+  const files = touched.length ? `<div class="k" style="margin-top:3px">touched <code>${touched.slice(0,6).map(esc).join('</code>, <code>')}</code></div>` : '';
+  return `<div class="lane ${s.status === 'abandoned' ? 'dead' : ''}">
+    <div class="row"><span class="name">${esc(s.agent)}</span><span class="badge active">${esc(s.status)}</span><span class="k">slot ${esc(s.slot)}</span><span class="k">SP_PORT_BASE ${esc(s.port_base)}</span><span class="k">SERVER_PORT ${esc(s.port_base)}</span></div>
+    <div class="k" style="margin-top:5px">workspace <code>${esc(s.workspace)}</code></div>
+    <div class="k" style="margin-top:3px">${repos || 'no repositories'}</div>
+    ${files}
+    <div class="k" style="margin-top:3px">lease heartbeat ${esc(new Date(s.last_heartbeat_ms || 0).toLocaleTimeString())}</div>
+  </div>`;
+}
+
+function render(v){
+  last = v;
+  const mode = v.config ? v.config.mode : 'unknown';
+  $('mode').textContent = `mode: ${mode}`;
+  $('modeSelect').value = mode;
+  const scope = v.config ? (v.config.barrier_scope || 'workspace') : 'workspace';
+  $('scopeSelect').value = scope;
+  const b = v.barrier || {};
+  $('barrier').textContent = b.open
+    ? `barrier #${b.barrier_id} open · ${(b.arrived||[]).length}/${(b.participants||[]).length} arrived`
+    : `barrier idle · scope ${scope}`;
+  const sessions = v.sessions || [];
+  const intents = v.intents || [];
+  $('lanes').innerHTML = sessions.length ? sessions.map(s => lane(s, intents)).join('') : '<div class="empty">No active agent sessions.</div>';
+
+  const comps = v.components || [];
+  if (comps.length) {
+    $('radar').innerHTML = `<div class="graph">${comps.map(c => `<div class="component"><b>component ${esc(c.component_id)}</b><div class="agents">${(c.agents||[]).map(esc).join(' ↔ ')}</div><div class="k">${esc(c.reason)}</div></div>`).join('')}</div>`;
+  } else {
+    $('radar').innerHTML = '<div class="empty">No contending components. Sessions are orthogonal.</div>';
+  }
+
+  const claims = v.claims || [];
+  const seqTable = claims.length
+    ? `<table><thead><tr><th>Agent</th><th>Rule</th><th>Namespace</th><th>Key</th><th>State</th></tr></thead><tbody>${claims.map(c => `<tr><td>${esc(c.agent)}</td><td>${esc(c.rule)}</td><td>${esc(c.namespace)}</td><td><code>${esc(c.key)}</code></td><td><span class="badge ${c.state === 'committed' ? 'active' : 'reserved'}">${esc(c.state)}</span></td></tr>`).join('')}</tbody></table>`
+    : '<div class="empty">No sequence claims reserved.</div>';
+
+  const paths = v.path_claims || [];
+  const pathTable = paths.length
+    ? `<div class="k" style="margin:10px 0 6px">Path claims</div><table><thead><tr><th>Agent</th><th>Repo</th><th>Path</th><th>Strength</th><th>Expires</th></tr></thead><tbody>${paths.map(p => `<tr><td>${esc(p.agent)}</td><td>${esc(p.repo)}</td><td><code>${esc(p.path)}</code></td><td><span class="badge ${p.strength === 'mandatory' ? 'blocked' : 'reserved'}">${esc(p.strength)}</span></td><td class="k">${esc(new Date(p.expires_ms || 0).toLocaleTimeString())}</td></tr>`).join('')}</tbody></table>`
+    : '';
+  $('sequences').innerHTML = seqTable + pathTable;
+
+  const notices = (v.notices || []).slice(-20).reverse();
+  $('notices').innerHTML = notices.length ? notices.map(n => `<div class="lane ${n.severity === 'blocking' ? 'dead' : n.severity === 'warning' ? 'warn' : ''}"><div class="row"><span class="k">#${esc(n.seq)}</span><span class="badge">${esc(n.severity)}</span><span class="k">${esc(n.agent || 'system')}</span></div><div>${esc(n.message)}</div></div>`).join('') : '<div class="empty">No notices.</div>';
+}
+
+async function refresh(){
+  try { const r = await fetch('/api/status', {cache:'no-store'}); render(await r.json()); } catch(e) {}
+}
+async function action(url, body){
+  try { await fetch(url, {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(body || {})}); await refresh(); } catch(e) {}
+}
+$('setMode').onclick = () => action('/api/mode', {mode: $('modeSelect').value});
+$('setScope').onclick = () => action('/api/mode', {barrier_scope: $('scopeSelect').value});
+$('releaseBarrier').onclick = () => action('/api/barrier/release', {});
+$('evict').onclick = () => { const agent = $('evictAgent').value.trim(); if (agent) action('/api/agent/evict', {agent}); };
+const params = new URLSearchParams(location.search);
+const live = params.get('live') !== '0';
+refresh();
+if (live) {
+  const es = new EventSource('/events');
+  es.onmessage = (e) => { try { render(JSON.parse(e.data)); } catch(_) {} };
+  setInterval(refresh, 5000);
+} else {
+  document.body.dataset.snapshot = '1';
+}
+</script>
+</body>
+</html>

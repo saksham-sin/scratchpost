@@ -1,0 +1,90 @@
+=== FAILURE 1: branch hijacking across 10 agents (shared .git/HEAD) ===
+agent_1 ran 'git checkout -b feat/agent-1' -> shared HEAD is now feat/agent-1
+agent_2 ran 'git checkout -b feat/agent-2' -> shared HEAD is now feat/agent-2
+agent_3 ran 'git checkout -b feat/agent-3' -> shared HEAD is now feat/agent-3
+agent_4 ran 'git checkout -b feat/agent-4' -> shared HEAD is now feat/agent-4
+agent_5 ran 'git checkout -b feat/agent-5' -> shared HEAD is now feat/agent-5
+agent_6 ran 'git checkout -b feat/agent-6' -> shared HEAD is now feat/agent-6
+agent_7 ran 'git checkout -b feat/agent-7' -> shared HEAD is now feat/agent-7
+agent_8 ran 'git checkout -b feat/agent-8' -> shared HEAD is now feat/agent-8
+agent_9 ran 'git checkout -b feat/agent-9' -> shared HEAD is now feat/agent-9
+agent_10 ran 'git checkout -b feat/agent-10' -> shared HEAD is now feat/agent-10
+RESULT: 10 agents believe they own a branch; the repository has exactly one HEAD.
+        Every agent after the first is committing onto someone else's branch.
+
+=== FAILURE 2: silent Liquibase sequence collision (10 agents claim id=200) ===
+agent_1 committed changeSet id=200 on seq/agent-1
+agent_2 committed changeSet id=200 on seq/agent-2
+agent_3 committed changeSet id=200 on seq/agent-3
+agent_4 committed changeSet id=200 on seq/agent-4
+agent_5 committed changeSet id=200 on seq/agent-5
+agent_6 committed changeSet id=200 on seq/agent-6
+agent_7 committed changeSet id=200 on seq/agent-7
+agent_8 committed changeSet id=200 on seq/agent-8
+agent_9 committed changeSet id=200 on seq/agent-9
+agent_10 committed changeSet id=200 on seq/agent-10
+git merge seq/agent-1 exit=0  |  migration validator exit=0
+git merge seq/agent-2 exit=0  |  migration validator exit=1
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-3 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-4 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-5 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-6 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-7 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-8 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-9 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+git merge seq/agent-10 exit=1  |  migration validator exit=1
+    Auto-merging src/main/resources/db/dbchangelog.xml
+    MIGRATION VALIDATION FAILED
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+      - auth-service/src/main/resources/db/dbchangelog.xml: duplicate changeSet id=200 (claimed twice)
+
+merges that reported success: 2/10
+merges that hit a textual conflict: 8/10
+duplicate changeSet id=200 occurrences on main: 2
+RESULT: git merged 2 branches with exit 0 and zero warnings, and main was
+        already corrupt after the second one. The remaining 8 agents then hit a
+        textual conflict and are stuck: their work cannot land at all.
+        Nothing in the git output ever mentioned a sequence number.
+
+=== FAILURE 3: port collision across 10 concurrent test runs ===
+agent_1 bound 127.0.0.1:8080 (test server)
+agent_2 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_3 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_4 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_5 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_6 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_7 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_8 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_9 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+agent_10 bind 127.0.0.1:8080 failed: Address already in use (EADDRINUSE)
+RESULT: 1 of 10 agents could start its test server; 9 crashed on EADDRINUSE.

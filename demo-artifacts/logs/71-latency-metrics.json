@@ -1,0 +1,23 @@
+{
+  "status_mmap_read": {
+    "n": 30,
+    "p50_ms": 3.2,
+    "p99_ms": 5.66,
+    "min_ms": 2.93,
+    "max_ms": 5.66
+  },
+  "claims_read": {
+    "n": 30,
+    "p50_ms": 3.77,
+    "p99_ms": 11.57,
+    "min_ms": 3.34,
+    "max_ms": 11.57
+  },
+  "version_cold_start": {
+    "n": 30,
+    "p50_ms": 3.01,
+    "p99_ms": 3.63,
+    "min_ms": 2.77,
+    "max_ms": 3.63
+  }
+}

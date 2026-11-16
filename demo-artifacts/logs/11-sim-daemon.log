@@ -1,0 +1,2 @@
+SP_NOTICE v1 seq=1 severity=info kind=daemon-started agent=system message=daemon started for /private/tmp/sp-enterprise-sim
+ts=1794781394880 level=info event=daemon.already_running master=/private/tmp/sp-enterprise-sim

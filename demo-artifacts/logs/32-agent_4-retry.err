@@ -1,0 +1,2 @@
+SP_NOTICE v1 seq=15 severity=blocking kind=commit-blocked agent=agent_4 message=42 is reserved by agent_3 for billing-service:db/migration
+SP_NOTICE v1 seq=16 severity=info kind=commit-permit agent=agent_4 message=commit permit e4bee6217b3ea1f4c798a3612798b3e4 issued for billing-service (1 sequence claim(s))

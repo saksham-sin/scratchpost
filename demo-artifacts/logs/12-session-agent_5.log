@@ -1,0 +1,10 @@
+SP_NOTICE v1 seq=5 severity=info kind=session-active agent=agent_4 message=agent agent_4 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace with port base 31300
+🐈 ScratchPost · session
+  agent agent_5
+  session    agent_5-1a1e5210761
+  slot       5
+  port_base  31400
+  workspace  /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace
+  repo auth-service path=auth-service branch=sp/agent_5/1a1e5210761 base=7df49fc539fe
+  repo billing-service path=billing-service branch=sp/agent_5/1a1e5210761 base=7a9e4aeb1c2e
+  repo notification-service path=notification-service branch=sp/agent_5/1a1e5210761 base=0620bad8bcbd

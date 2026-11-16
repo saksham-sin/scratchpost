@@ -1,0 +1,22 @@
+🐈 ScratchPost · init
+
+agent scaffolds
+  wrote scratchpost-agent-prompt.md
+  wrote AGENT_INSTRUCTIONS.md
+  wrote .scratchpost/agent-instructions.md
+  wrote .cursorrules
+  wrote .github/copilot-instructions.md
+  wrote .claude/skills/scratchpost/SKILL.md
+  wrote .claude/skills/scratchpost/skill.json
+
+daemon
+  ready .scratchpost/run/endpoint
+  token .scratchpost/run/token
+
+initialized /private/tmp/sp-enterprise-sim/.scratchpost
+discovered 3 repository(ies)
+
+next
+  1. paste scratchpost-agent-prompt.md into your agent's chat
+  2. the agent attaches itself with sp run --agent <name> -- bash
+  3. watch what the daemon does in RUNNING_REPORT.md

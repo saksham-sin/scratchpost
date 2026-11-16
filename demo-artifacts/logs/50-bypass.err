@@ -1,0 +1,7 @@
+SP_NOTICE v1 seq=23 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed auth-service (e5fba04f3d4c29fb2bdbb730d6b29f411c021e46); peers must rebase before publication
+SP_NOTICE v1 seq=24 severity=info kind=commit-permit agent=agent_1 message=commit permit e42439ecbdb02e73dfb5516a59f57ece issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=25 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (9fd32cbe3ba61477b855ecfc0559231d899cea8c); peers must rebase before publication
+SP_NOTICE v1 seq=26 severity=info kind=mode-changed agent=system message=coordination mode set to fcfs
+SP_BLOCKED v1 code=SP_GIT_INVOCATION_REJECTED conflict_id=0000000000000000
+commits must originate from the managed ScratchPost git shim; direct git invocations are rejected inside a session
+Exit status: 1

@@ -1,0 +1,248 @@
+{
+  "barrier": {
+    "arrived": [],
+    "barrier_id": 0,
+    "component": "",
+    "deadline_ms": 0,
+    "open": false,
+    "opened_ms": 0,
+    "participants": [],
+    "released": false
+  },
+  "barriers": [],
+  "claims": [],
+  "components": [],
+  "config": {
+    "barrier_scope": "workspace",
+    "barrier_timeout_ms": 120000,
+    "lease_timeout_ms": 300000,
+    "max_sessions": 32,
+    "mode": "fcfs",
+    "port_band_width": 100,
+    "port_base_start": 31000,
+    "ui_port": 19200
+  },
+  "daemon_pid": 54696,
+  "generation": 12,
+  "intents": [],
+  "master_root": "/private/tmp/sp-enterprise-sim",
+  "notices": [
+    {
+      "agent": null,
+      "created_ms": 1794845560114,
+      "kind": "daemon-started",
+      "message": "daemon started for /private/tmp/sp-enterprise-sim",
+      "seq": 1,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845560476,
+      "kind": "session-active",
+      "message": "agent agent_1 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace with port base 31000",
+      "seq": 2,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845560817,
+      "kind": "session-active",
+      "message": "agent agent_2 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace with port base 31100",
+      "seq": 3,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794845561163,
+      "kind": "session-active",
+      "message": "agent agent_3 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace with port base 31200",
+      "seq": 4,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794845561507,
+      "kind": "session-active",
+      "message": "agent agent_4 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace with port base 31300",
+      "seq": 5,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794845561843,
+      "kind": "session-active",
+      "message": "agent agent_5 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace with port base 31400",
+      "seq": 6,
+      "severity": "info"
+    }
+  ],
+  "path_claims": [],
+  "sessions": [
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845560467,
+      "last_heartbeat_ms": 1794845560495,
+      "port_base": 31000,
+      "repos": [
+        {
+          "base_oid": "7df49fc539fe5d3d242d4461f4f2cc75920b912f",
+          "branch": "sp/agent_1/1a1e52118d8",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace/auth-service"
+        },
+        {
+          "base_oid": "7a9e4aeb1c2e931133730e86246720f6d2b8c664",
+          "branch": "sp/agent_1/1a1e52118d8",
+          "name": "billing-service",
+          "relative_path": "billing-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace/billing-service"
+        },
+        {
+          "base_oid": "0620bad8bcbd8b21afa8532780fb462c2017ab69",
+          "branch": "sp/agent_1/1a1e52118d8",
+          "name": "notification-service",
+          "relative_path": "notification-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace/notification-service"
+        }
+      ],
+      "session_id": "agent_1-1a1e52118d8",
+      "slot": 1,
+      "status": "active",
+      "workspace": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845560808,
+      "last_heartbeat_ms": 1794845560838,
+      "port_base": 31100,
+      "repos": [
+        {
+          "base_oid": "7df49fc539fe5d3d242d4461f4f2cc75920b912f",
+          "branch": "sp/agent_2/1a1e5211b6f",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace/auth-service"
+        },
+        {
+          "base_oid": "7a9e4aeb1c2e931133730e86246720f6d2b8c664",
+          "branch": "sp/agent_2/1a1e5211b6f",
+          "name": "billing-service",
+          "relative_path": "billing-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace/billing-service"
+        },
+        {
+          "base_oid": "0620bad8bcbd8b21afa8532780fb462c2017ab69",
+          "branch": "sp/agent_2/1a1e5211b6f",
+          "name": "notification-service",
+          "relative_path": "notification-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace/notification-service"
+        }
+      ],
+      "session_id": "agent_2-1a1e5211b6f",
+      "slot": 2,
+      "status": "active",
+      "workspace": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794845561155,
+      "last_heartbeat_ms": 1794845561183,
+      "port_base": 31200,
+      "repos": [
+        {
+          "base_oid": "7df49fc539fe5d3d242d4461f4f2cc75920b912f",
+          "branch": "sp/agent_3/1a1e5210588",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace/auth-service"
+        },
+        {
+          "base_oid": "7a9e4aeb1c2e931133730e86246720f6d2b8c664",
+          "branch": "sp/agent_3/1a1e5210588",
+          "name": "billing-service",
+          "relative_path": "billing-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace/billing-service"
+        },
+        {
+          "base_oid": "0620bad8bcbd8b21afa8532780fb462c2017ab69",
+          "branch": "sp/agent_3/1a1e5210588",
+          "name": "notification-service",
+          "relative_path": "notification-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace/notification-service"
+        }
+      ],
+      "session_id": "agent_3-1a1e5210588",
+      "slot": 3,
+      "status": "active",
+      "workspace": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794845561496,
+      "last_heartbeat_ms": 1794845561523,
+      "port_base": 31300,
+      "repos": [
+        {
+          "base_oid": "7df49fc539fe5d3d242d4461f4f2cc75920b912f",
+          "branch": "sp/agent_4/1a1e52104d0",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace/auth-service"
+        },
+        {
+          "base_oid": "7a9e4aeb1c2e931133730e86246720f6d2b8c664",
+          "branch": "sp/agent_4/1a1e52104d0",
+          "name": "billing-service",
+          "relative_path": "billing-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace/billing-service"
+        },
+        {
+          "base_oid": "0620bad8bcbd8b21afa8532780fb462c2017ab69",
+          "branch": "sp/agent_4/1a1e52104d0",
+          "name": "notification-service",
+          "relative_path": "notification-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace/notification-service"
+        }
+      ],
+      "session_id": "agent_4-1a1e52104d0",
+      "slot": 4,
+      "status": "active",
+      "workspace": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794845561834,
+      "last_heartbeat_ms": 1794845561863,
+      "port_base": 31400,
+      "repos": [
+        {
+          "base_oid": "7df49fc539fe5d3d242d4461f4f2cc75920b912f",
+          "branch": "sp/agent_5/1a1e5210761",
+          "name": "auth-service",
+          "relative_path": "auth-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace/auth-service"
+        },
+        {
+          "base_oid": "7a9e4aeb1c2e931133730e86246720f6d2b8c664",
+          "branch": "sp/agent_5/1a1e5210761",
+          "name": "billing-service",
+          "relative_path": "billing-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace/billing-service"
+        },
+        {
+          "base_oid": "0620bad8bcbd8b21afa8532780fb462c2017ab69",
+          "branch": "sp/agent_5/1a1e5210761",
+          "name": "notification-service",
+          "relative_path": "notification-service",
+          "worktree": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace/notification-service"
+        }
+      ],
+      "session_id": "agent_5-1a1e5210761",
+      "slot": 5,
+      "status": "active",
+      "workspace": "/private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace"
+    }
+  ],
+  "started_ms": 1794845560106
+}

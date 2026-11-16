@@ -1,0 +1,12 @@
+SP_NOTICE v1 seq=1 severity=info kind=daemon-started agent=system message=daemon started for /private/tmp/sp-ten-agent-sim
+SP_NOTICE v1 seq=2 severity=info kind=session-active agent=agent_1 message=agent agent_1 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_1/workspace with port base 31000
+SP_NOTICE v1 seq=3 severity=info kind=session-active agent=agent_2 message=agent agent_2 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_2/workspace with port base 31100
+SP_NOTICE v1 seq=4 severity=info kind=session-active agent=agent_3 message=agent agent_3 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_3/workspace with port base 31200
+SP_NOTICE v1 seq=5 severity=info kind=session-active agent=agent_4 message=agent agent_4 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_4/workspace with port base 31300
+SP_NOTICE v1 seq=6 severity=info kind=session-active agent=agent_5 message=agent agent_5 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_5/workspace with port base 31400
+SP_NOTICE v1 seq=7 severity=info kind=session-active agent=agent_6 message=agent agent_6 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace with port base 31500
+SP_NOTICE v1 seq=8 severity=info kind=session-active agent=agent_7 message=agent agent_7 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_7/workspace with port base 31600
+SP_NOTICE v1 seq=9 severity=info kind=session-active agent=agent_8 message=agent agent_8 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace with port base 31700
+SP_NOTICE v1 seq=10 severity=info kind=session-active agent=agent_9 message=agent agent_9 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace with port base 31800
+SP_NOTICE v1 seq=11 severity=info kind=session-active agent=agent_10 message=agent agent_10 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace with port base 31900
+SP_NOTICE v1 seq=12 severity=info kind=commit-permit agent=agent_1 message=commit permit dead19e1ad04171d00aa7524dbdff0a3 issued for auth-service (1 sequence claim(s))

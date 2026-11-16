@@ -1,0 +1,40 @@
+SP_NOTICE v1 seq=84 severity=info kind=commit-permit agent=agent_1 message=commit permit 0eb988ee3a746698c69c0135a2d0852e issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=85 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (be1e3b8a1f74c812783fb5398b2d83d7830e988e); peers must rebase before publication
+SP_NOTICE v1 seq=81 severity=info kind=session-active agent=agent_11 message=agent agent_11 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_11/workspace with port base 32000
+SP_NOTICE v1 seq=82 severity=warning kind=session-evicted agent=agent_11 message=operator evicted agent agent_11
+SP_NOTICE v1 seq=83 severity=info kind=mode-changed agent=system message=coordination mode set to barrier-stacked
+SP_NOTICE v1 seq=84 severity=info kind=commit-permit agent=agent_1 message=commit permit 0eb988ee3a746698c69c0135a2d0852e issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=85 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (be1e3b8a1f74c812783fb5398b2d83d7830e988e); peers must rebase before publication
+SP_BLOCKED v1 code=SP_BARRIER_WAIT conflict_id=03433c2b0dfe0013
+agent=agent_2 repo=multiple branch=session operation=git.commit
+
+Your commit was NOT created. A deterministic repository check failed.
+This is a coordination conflict, not a transient Git error.
+
+EVIDENCE
+  detail: barrier 1 for component agent_1+agent_2 is waiting for: agent_1
+
+WHY THIS MATTERS
+  Another agent or the base branch already owns part of this change.
+  Committing it unchanged would produce an inconsistent repository state.
+
+RESOLUTION
+  1. Inspect barrier participants and status.
+       sp barrier status
+  2. Retry the original commit after the barrier releases or the deadline degrades to FCFS.
+       git commit -m "<your original message>"
+
+RETRY CONTRACT
+  mode: rerun_original_command
+  validation: automatic_on_retry
+  max_attempts: 3
+  idempotent: true
+
+FORBIDDEN
+  - git commit --no-verify
+  - editing .scratchpost state
+  - force-pushing another agent branch
+
+SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_BARRIER_WAIT","conflict_id":"03433c2b0dfe0013","operation":"git.commit","agent":"agent_2","repo":"multiple","branch":"session","base_oid":"","head_oid":"","paths":[],"evidence":{"kind":"barrier_wait","rule":null,"namespace":null,"path":null,"line":null,"requested":null,"holder":null,"holder_intent":null,"lowest_free":null,"base_oid":null,"target_oid":null,"conflicting_paths":[],"detail":"barrier 1 for component agent_1+agent_2 is waiting for: agent_1"},"resolution":{"summary":"Wait for the active coordination barrier, then retry the commit.","steps":[{"ordinal":1,"action":"Inspect barrier participants and status.","command":"sp barrier status"},{"ordinal":2,"action":"Retry the original commit after the barrier releases or the deadline degrades to FCFS.","command":"git commit -m \"<your original message>\""}],"safe_retry_command":null,"forbidden_actions":["git commit --no-verify","editing .scratchpost state","force-pushing another agent branch"]},"retry":{"mode":"rerun_original_command","idempotent":true,"retry_after_ms":null,"max_attempts":3,"validation":"automatic_on_retry"}}
+
+Exit status: 1

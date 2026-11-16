@@ -1,0 +1,23 @@
+ts=1794852967153 level=info event=daemon.ready master=/private/tmp/sp-ten-agent-sim socket=/tmp/sp/502/919222320ea69b83.sock
+ts=1794852967177 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_1
+ts=1794852967406 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_1 slot=1 port_base=31000
+ts=1794852967431 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_2
+ts=1794852967672 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_2 slot=2 port_base=31100
+ts=1794852967698 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_3
+ts=1794852967931 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_3 slot=3 port_base=31200
+ts=1794852967962 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_4
+ts=1794852968191 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_4 slot=4 port_base=31300
+ts=1794852968219 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_5
+ts=1794852968449 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_5 slot=5 port_base=31400
+ts=1794852968475 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_6
+ts=1794852968708 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_6 slot=6 port_base=31500
+ts=1794852968737 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_7
+ts=1794852968964 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_7 slot=7 port_base=31600
+ts=1794852968992 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_8
+ts=1794852969225 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_8 slot=8 port_base=31700
+ts=1794852969252 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_9
+ts=1794852969477 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_9 slot=9 port_base=31800
+ts=1794852969505 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_10
+ts=1794852969739 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_10 slot=10 port_base=31900
+ts=1794852979540 level=info event=session.provision.begin master=/private/tmp/sp-ten-agent-sim agent=agent_11
+ts=1794852979797 level=info event=session.provision.complete master=/private/tmp/sp-ten-agent-sim agent=agent_11 slot=11 port_base=32000

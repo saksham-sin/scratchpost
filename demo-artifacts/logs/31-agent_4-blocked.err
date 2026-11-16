@@ -1,0 +1,60 @@
+SP_NOTICE v1 seq=13 severity=info kind=commit-permit agent=agent_3 message=commit permit 15c442734bbc61f32d035991dca3bd39 issued for billing-service (1 sequence claim(s))
+SP_NOTICE v1 seq=14 severity=info kind=mutation-published agent=agent_3 message=agent agent_3 committed billing-service (2d12436b11201d5d072e7feaf51487b434803dbf); peers must rebase before publication
+SP_NOTICE v1 seq=1 severity=info kind=daemon-started agent=system message=daemon started for /private/tmp/sp-enterprise-sim
+SP_NOTICE v1 seq=2 severity=info kind=session-active agent=agent_1 message=agent agent_1 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace with port base 31000
+SP_NOTICE v1 seq=3 severity=info kind=session-active agent=agent_2 message=agent agent_2 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace with port base 31100
+SP_NOTICE v1 seq=4 severity=info kind=session-active agent=agent_3 message=agent agent_3 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace with port base 31200
+SP_NOTICE v1 seq=5 severity=info kind=session-active agent=agent_4 message=agent agent_4 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace with port base 31300
+SP_NOTICE v1 seq=6 severity=info kind=session-active agent=agent_5 message=agent agent_5 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace with port base 31400
+SP_NOTICE v1 seq=7 severity=info kind=commit-permit agent=agent_1 message=commit permit 22eb17b310a9425f06bb9dbadf953c48 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=8 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (bfbd1d46e7f3e7e4ebe963551b9e8c8be96a2ab7); peers must rebase before publication
+SP_NOTICE v1 seq=9 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=10 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=11 severity=info kind=commit-permit agent=agent_2 message=commit permit 7a38794f75a884542d6acb60b9d9b448 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=12 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed auth-service (cd0882f19c0b5d75c28bfa5c4591b28b0a58c61c); peers must rebase before publication
+SP_NOTICE v1 seq=13 severity=info kind=commit-permit agent=agent_3 message=commit permit 15c442734bbc61f32d035991dca3bd39 issued for billing-service (1 sequence claim(s))
+SP_NOTICE v1 seq=14 severity=info kind=mutation-published agent=agent_3 message=agent agent_3 committed billing-service (2d12436b11201d5d072e7feaf51487b434803dbf); peers must rebase before publication
+SP_BLOCKED v1 code=SP_SEQUENCE_COLLISION conflict_id=03431febb3740002
+agent=agent_4 repo=billing-service branch=sp/agent_4/1a1e52104d0 operation=git.commit
+
+Your commit was NOT created. A deterministic repository check failed.
+This is a coordination conflict, not a transient Git error.
+
+EVIDENCE
+  rule: flyway.versioned_migration
+  namespace: billing-service:db/migration
+  file: db/migration/V42__add_vat_column.sql
+  line: 1
+  requested value: 42
+  reserved by: agent_3 (intent/claim 3)
+  lowest_free: 43
+  base: 7a9e4aeb1c2e931133730e86246720f6d2b8c664
+  conflicting paths: db/migration/V42__add_vat_column.sql
+  detail: sequence namespace billing-service:db/migration is already reserved
+
+WHY THIS MATTERS
+  Another agent or the base branch already owns part of this change.
+  Committing it unchanged would produce an inconsistent repository state.
+
+RESOLUTION
+  1. Change the value at db/migration/V42__add_vat_column.sql:1 from 42 to 43.
+       sp resequence --agent agent_4 --file billing-service/db/migration/V42__add_vat_column.sql --from 42 --to 43
+  2. Re-stage the edited file.
+       git -C billing-service add -- db/migration/V42__add_vat_column.sql
+  3. Retry the original commit.
+       git commit -m "<your original message>"
+
+RETRY CONTRACT
+  mode: rerun_original_command
+  validation: automatic_on_retry
+  max_attempts: 3
+  idempotent: true
+
+FORBIDDEN
+  - git commit --no-verify
+  - editing .scratchpost state
+  - force-pushing another agent branch
+
+SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_SEQUENCE_COLLISION","conflict_id":"03431febb3740002","operation":"git.commit","agent":"agent_4","repo":"billing-service","branch":"sp/agent_4/1a1e52104d0","base_oid":"7a9e4aeb1c2e931133730e86246720f6d2b8c664","head_oid":"7a9e4aeb1c2e931133730e86246720f6d2b8c664","paths":["db/migration/V42__add_vat_column.sql"],"evidence":{"kind":"sequence_collision","rule":"flyway.versioned_migration","namespace":"billing-service:db/migration","path":"db/migration/V42__add_vat_column.sql","line":1,"requested":"42","holder":"agent_3 (intent/claim 3)","holder_intent":3,"lowest_free":"43","base_oid":"7a9e4aeb1c2e931133730e86246720f6d2b8c664","target_oid":null,"conflicting_paths":["db/migration/V42__add_vat_column.sql"],"detail":"sequence namespace billing-service:db/migration is already reserved"},"resolution":{"summary":"Reassign the duplicate sequence value and retry the commit.","steps":[{"ordinal":1,"action":"Change the value at db/migration/V42__add_vat_column.sql:1 from 42 to 43.","command":"sp resequence --agent agent_4 --file billing-service/db/migration/V42__add_vat_column.sql --from 42 --to 43"},{"ordinal":2,"action":"Re-stage the edited file.","command":"git -C billing-service add -- db/migration/V42__add_vat_column.sql"},{"ordinal":3,"action":"Retry the original commit.","command":"git commit -m \"<your original message>\""}],"safe_retry_command":null,"forbidden_actions":["git commit --no-verify","editing .scratchpost state","force-pushing another agent branch"]},"retry":{"mode":"rerun_original_command","idempotent":true,"retry_after_ms":null,"max_attempts":3,"validation":"automatic_on_retry"}}
+
+Exit status: 1

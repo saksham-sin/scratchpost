@@ -1,0 +1,12 @@
+SP_NOTICE v1 seq=23 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=14 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=15 severity=blocking kind=commit-blocked agent=agent_3 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=16 severity=blocking kind=commit-blocked agent=agent_4 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=17 severity=blocking kind=commit-blocked agent=agent_5 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=18 severity=blocking kind=commit-blocked agent=agent_6 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=19 severity=blocking kind=commit-blocked agent=agent_7 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=20 severity=blocking kind=commit-blocked agent=agent_8 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=21 severity=blocking kind=commit-blocked agent=agent_9 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=22 severity=blocking kind=commit-blocked agent=agent_10 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=23 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=24 severity=info kind=commit-permit agent=agent_2 message=commit permit 4cdc8a3fb23290f284f685997fbbad06 issued for auth-service (1 sequence claim(s))

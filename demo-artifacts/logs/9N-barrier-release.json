@@ -1,0 +1,35 @@
+{
+  "released": [
+    {
+      "arrived": [
+        "agent_2"
+      ],
+      "barrier_id": 1,
+      "component": "agent_1+agent_2",
+      "deadline_ms": 1794853000466,
+      "open": false,
+      "opened_ms": 1794852980466,
+      "participants": [
+        "agent_1",
+        "agent_2"
+      ],
+      "released": true
+    },
+    {
+      "arrived": [
+        "agent_3"
+      ],
+      "barrier_id": 1,
+      "component": "agent_1+agent_2+agent_3",
+      "deadline_ms": 1794853000610,
+      "open": false,
+      "opened_ms": 1794852980610,
+      "participants": [
+        "agent_1",
+        "agent_2",
+        "agent_3"
+      ],
+      "released": true
+    }
+  ]
+}

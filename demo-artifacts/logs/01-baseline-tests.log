@@ -1,0 +1,65 @@
+=== cargo test ===
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/main.rs (target/debug/build/scratchpost/f0e917827b5ba748/out/sp-f0e917827b5ba748)
+running 13 tests
+test rules::tests::finds_new_sequence_keys ... ok
+test style::tests::align_pads_to_the_widest_key ... ok
+test agents::tests::every_scaffold_carries_the_marker ... ok
+test agents::tests::instructions_cover_the_blocked_contract ... ok
+test style::tests::colour_is_suppressed_when_not_a_terminal ... ok
+test style::tests::header_carries_the_mark_and_title ... ok
+test style::tests::no_color_overrides_force ... ok
+test prompt::tests::prompt_contains_required_contract_fields ... ok
+test rules::tests::parses_flyway_versions ... ok
+test rules::tests::parses_liquibase_changesets ... ok
+test ledger::tests::wal_recovery_replays_events ... ok
+test agents::tests::scaffolds_are_written_and_user_files_preserved ... ok
+test ledger::tests::seqlock_concurrent_reads ... ok
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+=== scripts/verify-e2e.sh ===
+==> building release binary
+==> creating temporary master workspace with two microservice repositories
+  ok: workspace at /var/folders/gc/8gfv2tqn2x1gt1vzf463r22m0000gp/T//sp-e2e.gfib54/workspace
+==> initializing ScratchPost
+  ok: managed state, shim, and hooks installed
+==> starting scratchpostd
+  ok: daemon ready (pid from init)
+==> provisioning two isolated agent sessions
+SP_NOTICE v1 seq=2 severity=info kind=session-active agent=agent_1 message=agent agent_1 attached in /private/var/folders/gc/8gfv2tqn2x1gt1vzf463r22m0000gp/T/sp-e2e.gfib54/workspace/.scratchpost/sessions/agent_1/workspace with port base 31000
+SP_NOTICE v1 seq=3 severity=info kind=session-active agent=agent_2 message=agent agent_2 attached in /private/var/folders/gc/8gfv2tqn2x1gt1vzf463r22m0000gp/T/sp-e2e.gfib54/workspace/.scratchpost/sessions/agent_2/workspace with port base 31100
+  ok: agents use distinct slots, port bands, and workspaces
+  ok: session isolation and resource leases verified
+==> agent_1 adds Liquibase changeSet id=200
+  ok: managed hooks reject direct unmanaged git commits
+SP_NOTICE v1 seq=4 severity=info kind=commit-permit agent=agent_1 message=commit permit 5137495f27ef28db285170fc760e53aa issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=5 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (e98d0545eb93016dde139daa43010243fbbe4ffd); peers must rebase before publication
+  ok: agent_1 committed and sequence claim 200 is committed
+==> agent_2 independently adds Liquibase changeSet id=200
+  ok: SP_CONFLICT_JSON schema, code, evidence, and retry contract verified
+  ok: agent_2 was blocked with deterministic passive resolution prompt
+==> applying the suggested resequence and retrying agent_2
+SP_NOTICE v1 seq=6 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:dbchangelog.xml
+SP_NOTICE v1 seq=7 severity=info kind=commit-permit agent=agent_2 message=commit permit 102879b14968f525d25f0f2c112cdd7b issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=8 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed auth-service (0a4290f906c327861c3bb4f5481adfffbcc70bd8); peers must rebase before publication
+  ok: resequenced commit 201 recorded as committed
+==> smoke testing MCP JSON-RPC over stdio
+  ok: MCP initialize, tools/list, and sp_status verified
+  ok: stdio MCP server responses valid
+==> smoke testing embedded Web UI and SSE
+  ok: dashboard, /api/status, and /events SSE verified
+==> smoke testing barrier control surface
+SP_NOTICE v1 seq=9 severity=info kind=mode-changed agent=system message=coordination mode set to barrier-stacked
+SP_NOTICE v1 seq=10 severity=info kind=barrier-released agent=system message=all participants of component workspace reached the barrier
+SP_NOTICE v1 seq=11 severity=warning kind=barrier-forced-release agent=system message=operator released 1 active barrier(s)
+  ok: barrier arrive/release and mode switching verified
+==> verifying barrier mode gates commits until peers arrive
+SP_NOTICE v1 seq=12 severity=info kind=mode-changed agent=system message=coordination mode set to fcfs
+SP_NOTICE v1 seq=13 severity=info kind=mode-changed agent=system message=coordination mode set to barrier-stacked
+SP_NOTICE v1 seq=17 severity=info kind=commit-permit agent=agent_1 message=commit permit edcfd3204879a033d889216e8d04924b issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=18 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (eec1fd2332bdaf28320251efa6107b2f0ab01399); peers must rebase before publication
+  ok: barrier mode blocked first commit, released on peer arrival, and admitted retry
+==> measuring scratchpostd resident memory
+  ok: daemon RSS 3328 KB < 15360 KB
+
+E2E PASS: ScratchPost commit gate, sequence resequencing, MCP, UI/SSE, barrier controls, and memory budget verified.

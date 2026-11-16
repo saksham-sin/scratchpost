@@ -1,0 +1,44 @@
+{
+  "barrier": {
+    "arrived": [
+      "agent_1"
+    ],
+    "barrier_id": 1,
+    "component": "agent_1+agent_2",
+    "deadline_ms": 1794845683933,
+    "open": true,
+    "opened_ms": 1794845563933,
+    "participants": [
+      "agent_1",
+      "agent_2"
+    ],
+    "released": false
+  },
+  "barriers": [
+    {
+      "arrived": [
+        "agent_1"
+      ],
+      "barrier_id": 1,
+      "component": "agent_1+agent_2",
+      "deadline_ms": 1794845683933,
+      "open": true,
+      "opened_ms": 1794845563933,
+      "participants": [
+        "agent_1",
+        "agent_2"
+      ],
+      "released": false
+    }
+  ],
+  "components": [
+    {
+      "agents": [
+        "agent_1",
+        "agent_2"
+      ],
+      "component_id": 0,
+      "reason": "overlapping touched paths"
+    }
+  ]
+}

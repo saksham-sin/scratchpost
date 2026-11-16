@@ -1,0 +1,228 @@
+{
+  "notices": [
+    {
+      "agent": null,
+      "created_ms": 1794845560114,
+      "kind": "daemon-started",
+      "message": "daemon started for /private/tmp/sp-enterprise-sim",
+      "seq": 1,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845560476,
+      "kind": "session-active",
+      "message": "agent agent_1 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_1/workspace with port base 31000",
+      "seq": 2,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845560817,
+      "kind": "session-active",
+      "message": "agent agent_2 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_2/workspace with port base 31100",
+      "seq": 3,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794845561163,
+      "kind": "session-active",
+      "message": "agent agent_3 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_3/workspace with port base 31200",
+      "seq": 4,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794845561507,
+      "kind": "session-active",
+      "message": "agent agent_4 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_4/workspace with port base 31300",
+      "seq": 5,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794845561843,
+      "kind": "session-active",
+      "message": "agent agent_5 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_5/workspace with port base 31400",
+      "seq": 6,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845562192,
+      "kind": "commit-permit",
+      "message": "commit permit 22eb17b310a9425f06bb9dbadf953c48 issued for auth-service (1 sequence claim(s))",
+      "seq": 7,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845562381,
+      "kind": "mutation-published",
+      "message": "agent agent_1 committed auth-service (bfbd1d46e7f3e7e4ebe963551b9e8c8be96a2ab7); peers must rebase before publication",
+      "seq": 8,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845562528,
+      "kind": "commit-blocked",
+      "message": "200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml",
+      "seq": 9,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845562610,
+      "kind": "sequence-resequenced",
+      "message": "agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it",
+      "seq": 10,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845562747,
+      "kind": "commit-permit",
+      "message": "commit permit 7a38794f75a884542d6acb60b9d9b448 issued for auth-service (1 sequence claim(s))",
+      "seq": 11,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845562807,
+      "kind": "mutation-published",
+      "message": "agent agent_2 committed auth-service (cd0882f19c0b5d75c28bfa5c4591b28b0a58c61c); peers must rebase before publication",
+      "seq": 12,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794845563119,
+      "kind": "commit-permit",
+      "message": "commit permit 15c442734bbc61f32d035991dca3bd39 issued for billing-service (1 sequence claim(s))",
+      "seq": 13,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_3",
+      "created_ms": 1794845563173,
+      "kind": "mutation-published",
+      "message": "agent agent_3 committed billing-service (2d12436b11201d5d072e7feaf51487b434803dbf); peers must rebase before publication",
+      "seq": 14,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794845563322,
+      "kind": "commit-blocked",
+      "message": "42 is reserved by agent_3 for billing-service:db/migration",
+      "seq": 15,
+      "severity": "blocking"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794845563541,
+      "kind": "commit-permit",
+      "message": "commit permit e4bee6217b3ea1f4c798a3612798b3e4 issued for billing-service (1 sequence claim(s))",
+      "seq": 16,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_4",
+      "created_ms": 1794845563598,
+      "kind": "mutation-published",
+      "message": "agent agent_4 committed billing-service (b803a3467b564b735f83df112fa75c30d86d4289); peers must rebase before publication",
+      "seq": 17,
+      "severity": "info"
+    },
+    {
+      "agent": null,
+      "created_ms": 1794845563657,
+      "kind": "mode-changed",
+      "message": "coordination mode set to barrier-stacked",
+      "seq": 18,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794845564189,
+      "kind": "commit-permit",
+      "message": "commit permit db137d3ff7b63b06e9db177dbfb0bf52 issued for notification-service (0 sequence claim(s))",
+      "seq": 19,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_5",
+      "created_ms": 1794845564247,
+      "kind": "mutation-published",
+      "message": "agent agent_5 committed notification-service (898d05bc6862b50aa4762b048a687b9abe145425); peers must rebase before publication",
+      "seq": 20,
+      "severity": "info"
+    },
+    {
+      "agent": null,
+      "created_ms": 1794845564302,
+      "kind": "barrier-forced-release",
+      "message": "operator released 1 active barrier(s)",
+      "seq": 21,
+      "severity": "warning"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845564459,
+      "kind": "commit-permit",
+      "message": "commit permit aea086ab7b44bfe80ef72ada2f3a922f issued for auth-service (1 sequence claim(s))",
+      "seq": 22,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_2",
+      "created_ms": 1794845564519,
+      "kind": "mutation-published",
+      "message": "agent agent_2 committed auth-service (e5fba04f3d4c29fb2bdbb730d6b29f411c021e46); peers must rebase before publication",
+      "seq": 23,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845564681,
+      "kind": "commit-permit",
+      "message": "commit permit e42439ecbdb02e73dfb5516a59f57ece issued for auth-service (1 sequence claim(s))",
+      "seq": 24,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_1",
+      "created_ms": 1794845564744,
+      "kind": "mutation-published",
+      "message": "agent agent_1 committed auth-service (9fd32cbe3ba61477b855ecfc0559231d899cea8c); peers must rebase before publication",
+      "seq": 25,
+      "severity": "info"
+    },
+    {
+      "agent": null,
+      "created_ms": 1794845564795,
+      "kind": "mode-changed",
+      "message": "coordination mode set to fcfs",
+      "seq": 26,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794845565343,
+      "kind": "session-active",
+      "message": "agent agent_6 attached in /private/tmp/sp-enterprise-sim/.scratchpost/sessions/agent_6/workspace with port base 31500",
+      "seq": 27,
+      "severity": "info"
+    },
+    {
+      "agent": "agent_6",
+      "created_ms": 1794845565400,
+      "kind": "session-evicted",
+      "message": "operator evicted agent agent_6",
+      "seq": 28,
+      "severity": "warning"
+    }
+  ]
+}

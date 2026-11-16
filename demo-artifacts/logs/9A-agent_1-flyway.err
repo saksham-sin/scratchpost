@@ -1,0 +1,21 @@
+SP_NOTICE v1 seq=13 severity=info kind=mutation-published agent=agent_1 message=agent agent_1 committed auth-service (6abad911502607353ecf47a729246e4a47fd7213); peers must rebase before publication
+SP_NOTICE v1 seq=14 severity=blocking kind=commit-blocked agent=agent_2 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=15 severity=blocking kind=commit-blocked agent=agent_3 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=16 severity=blocking kind=commit-blocked agent=agent_4 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=17 severity=blocking kind=commit-blocked agent=agent_5 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=18 severity=blocking kind=commit-blocked agent=agent_6 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=19 severity=blocking kind=commit-blocked agent=agent_7 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=20 severity=blocking kind=commit-blocked agent=agent_8 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=21 severity=blocking kind=commit-blocked agent=agent_9 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=22 severity=blocking kind=commit-blocked agent=agent_10 message=200 is reserved by agent_1 for auth-service:src/main/resources/db/dbchangelog.xml
+SP_NOTICE v1 seq=23 severity=info kind=sequence-resequenced agent=agent_2 message=agent agent_2 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 201 and staged it
+SP_NOTICE v1 seq=24 severity=info kind=commit-permit agent=agent_2 message=commit permit 4cdc8a3fb23290f284f685997fbbad06 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=25 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed auth-service (2ca3a815e7be5695a46aee1e763c35c6c0f61a17); peers must rebase before publication
+SP_NOTICE v1 seq=26 severity=info kind=sequence-resequenced agent=agent_3 message=agent agent_3 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 202 and staged it
+SP_NOTICE v1 seq=27 severity=info kind=commit-permit agent=agent_3 message=commit permit eceb7b16b83031afd5b2e4b66cbf34f0 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=28 severity=info kind=mutation-published agent=agent_3 message=agent agent_3 committed auth-service (9412d7e4c94ba8d6bf3d517e88084cded83dd630); peers must rebase before publication
+SP_NOTICE v1 seq=29 severity=info kind=sequence-resequenced agent=agent_4 message=agent agent_4 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 203 and staged it
+SP_NOTICE v1 seq=30 severity=info kind=commit-permit agent=agent_4 message=commit permit 57904a8a664b048216fc64660b07cf22 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=31 severity=info kind=mutation-published agent=agent_4 message=agent agent_4 committed auth-service (25805eca6aad70e92ef9decaab61ef76a442f47f); peers must rebase before publication
+SP_NOTICE v1 seq=32 severity=info kind=sequence-resequenced agent=agent_5 message=agent agent_5 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 204 and staged it
+SP_NOTICE v1 seq=50 severity=info kind=commit-permit agent=agent_1 message=commit permit 8053b36cd80a41a17c265dbc69680e7c issued for payment-service (1 sequence claim(s))
