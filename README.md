@@ -97,6 +97,11 @@ install -m755 target/release/sp /usr/local/bin/sp
 Requires Rust 1.75+. No Node, no Python runtime, no network access at runtime.
 </details>
 
+> [!IMPORTANT]
+> **macOS and Linux only.** ScratchPost does not build on Windows today — the
+> IPC layer uses Unix domain sockets, the daemon lock uses `flock`, and the
+> `git` shim is a symlink. See [Platform support](#platform-support).
+
 ## How it works
 
 ### 1. Every agent gets a real worktree
@@ -265,6 +270,42 @@ same source, same profile (`opt-level="z"`, `lto="fat"`, `strip="symbols"`).
 The gate overhead is above the original 50 ms target — atomic subprocess plumbing
 and WAL fsync. It is documented honestly rather than hidden; see
 [DEMO_REPORT.md](DEMO_REPORT.md) §7.1.
+
+## Platform support
+
+| Platform | Status |
+|---|---|
+| macOS (arm64, x86_64) | **Supported**, tested in CI |
+| Linux (x86_64, aarch64) | **Supported**, tested in CI |
+| Windows | **Not supported** — does not compile |
+
+Windows is not a configuration gap; it is a port that has not been done. The
+current source fails to build for `x86_64-pc-windows-msvc` with 16 errors, all
+from Unix-only APIs:
+
+| Blocker | Where | Why it is load-bearing |
+|---|---|---|
+| `std::os::unix::net::{UnixStream, UnixListener}` | `src/client.rs`, `src/daemon.rs` | The entire client↔daemon IPC transport |
+| `libc::flock` | `src/daemon.rs` | Single-daemon guard; needs `LockFileEx` |
+| `libc::getuid` | `src/workspace.rs` | Per-user socket directory |
+| `PermissionsExt::set_mode` | `src/workspace.rs`, `src/daemon.rs` | `0600` on the capability token |
+| `std::os::unix::fs::symlink` | `src/workspace.rs` | The `sp` / `git` shim links |
+| `#!/bin/sh` hook bodies | `src/workspace.rs` | The commit gate itself |
+
+Two further assumptions would need auditing even after those compile:
+`PATH` is split on `':'` (`src/git_engine.rs`, `src/shim.rs`), and the socket
+lives under `/tmp`. `install.sh` is POSIX `sh` and needs WSL or Git Bash.
+
+What already works unchanged: the copy-on-write path degrades to `fs::copy` via
+its `#[cfg(not(any(target_os = "macos", target_os = "linux")))]` arm, Git is
+invoked with an explicit argument vector and no shell, and the seqlock ledger is
+portable.
+
+If you want Windows support, the work is roughly: an `ipc` module with
+`#[cfg]`-gated named-pipe and Unix-socket implementations behind one trait,
+`LockFileEx` for the daemon lock, `.cmd` shims instead of symlinks, a per-user
+state directory instead of `getuid`, and a `windows-latest` CI job. Open an
+issue if you want to take it on.
 
 ## Documentation
 

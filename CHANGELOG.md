@@ -87,6 +87,10 @@ for parallel coding agents.
   agents inside `sp shell`.
 - No kernel-level sandboxing. ScratchPost coordinates cooperating agents; it does
   not contain hostile ones.
+- **Windows is not supported.** The source does not compile for
+  `x86_64-pc-windows-msvc`; the IPC layer, daemon lock, token permissions, and
+  `git` shim all use Unix-only APIs. macOS and Linux only. See
+  [README.md § Platform support](README.md#platform-support).
 
 [Unreleased]: https://github.com/saksham-sin/scratchpost/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/saksham-sin/scratchpost/releases/tag/v0.1.0

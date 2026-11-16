@@ -20,6 +20,16 @@ private reporting:
 Include the version, platform, a description of the impact, and a reproduction if
 you have one. Expect an acknowledgement within a few days.
 
+## Supported platforms
+
+macOS and Linux only. **Windows is not supported and does not currently
+compile** — the IPC layer uses Unix domain sockets, the daemon lock uses
+`flock`, and the `git` shim is a symlink. See the platform support table in
+[README.md](README.md#platform-support).
+
+Security reports for Windows are out of scope until a port lands. Reports for
+macOS and Linux are in scope.
+
 ## Threat model
 
 ScratchPost is a **coordination** tool, not a sandbox. It is designed to stop
