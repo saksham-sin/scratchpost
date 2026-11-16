@@ -4,17 +4,16 @@
 
 # ScratchPost
 
-**Stop your parallel coding agents from scratching the same file.**
+### Stop parallel agents from scratching the same file.
 
-A single-binary Rust workspace coordinator for AI coding agents.
-Isolated worktrees · deterministic migration sequences · a commit gate that
-refuses to let two agents corrupt `main`.
+The Rust Git multiplexer & pre-PR conflict broker for AI coding swarms.
+Keep parallel agents in their own lanes, so they don't overwrite each other's work.
 
 [![CI](https://github.com/saksham-sin/scratchpost/actions/workflows/ci.yml/badge.svg)](https://github.com/saksham-sin/scratchpost/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/rust-1.75%2B-orange.svg)](https://www.rust-lang.org)
 
-[Quick start](#quick-start) · [The problem](#the-problem) · [How it works](#how-it-works) · [Results](#results) · [Docs](#documentation)
+[The problem](#the-problem) · [The solution](#the-solution) · [How it works](#how-it-works) · [Why it's fast](#why-its-fast) · [Get started](#get-started)
 
 </div>
 
@@ -22,8 +21,12 @@ refuses to let two agents corrupt `main`.
 
 ## The problem
 
-You run five AI coding agents in parallel in one workspace. Three things break,
-and none of them are reported by Git:
+### 5+ agents. One repo. Pure chaos.
+
+| | | |
+|---|---|---|
+| **Overwritten branches** | **Crashing test servers** | **Silent deploy bugs** |
+| One agent switches branches and wipes out another's work. | Port 8080 clashes when agents run tests at the same time. | Duplicate database migration IDs slip through unnoticed. |
 
 ```text
 agent_1  git checkout -b feat/oauth     →  .git/HEAD now says feat/oauth
@@ -31,25 +34,29 @@ agent_2  git checkout -b feat/mfa       →  .git/HEAD now says feat/mfa
                                             agent_1 is committing onto agent_2's branch
 ```
 
-```text
-agent_1  adds <changeSet id="200">  (appended)
-agent_2  adds <changeSet id="200">  (prepended)
+## The problem with Git
 
-git merge  →  exit 0, zero conflicts, zero warnings
-main       →  two migrations claiming sequence 200
+### Git checks text lines, not logic.
+
+```text
+$ git merge feat/agent-2
+Auto-merging dbchangelog.xml — exit 0
+
+✓ Merged cleanly. Zero warnings.
+✗ Duplicate ID 200 → production breaks later.
 ```
 
-Git is a **text**-merge tool. It has no concept of a *semantic* collision — two
-changes that are textually disjoint but logically exclusive. The build breaks
-later, at deploy time, in a different repository, for a different team.
+| | |
+|---|---|
+| **Same ID, no warning** | **Breaks in production** |
+| Two agents each claim migration ID `200`. Git only compares lines of text, so it merges them with zero warnings. | The clash only shows up after the code is merged and live, when it's costly to fix. |
 
-ScratchPost is the missing layer: it gives every agent a private worktree, a
-private port band, and a commit gate that understands what the code *means*.
+Git is a **text**-merge tool. It has no concept of a *semantic* collision — two changes that are textually disjoint but logically exclusive. The build breaks later, at deploy time, in a different repository, for a different team.
 
-## Results
+<details>
+<summary><b>Measured: ten agents, one repository, the same collisions attempted</b></summary>
 
-Ten agents, one repository, the same collisions attempted. Measured, not
-estimated — reproduce with `bash scripts/ten-agent-sim.sh`.
+Reproduce with `bash scripts/ten-agent-sim.sh`.
 
 | | Plain `git` | ScratchPost |
 |---|---|---|
@@ -61,53 +68,18 @@ estimated — reproduce with `bash scripts/ten-agent-sim.sh`.
 | Agents stuck on a textual conflict | 8 / 10 | **0 / 10** |
 | Human intervention required | yes | **none** |
 
-<div align="center">
-<img src="demo-artifacts/screenshots/03-ten-agent-mission-control.png" alt="Mission Control with ten agent lanes, a mergeability radar, and the live sequence registry" width="900">
-<br/>
-<sub>Mission Control: ten live agent lanes, the mergeability radar, and the sequence registry reading <code>200, 201, 202 … 209</code> — the ten agents, ordered.</sub>
-</div>
-
-## Quick start
-
-```sh
-# 1. Install
-curl -sSL https://raw.githubusercontent.com/saksham-sin/scratchpost/main/install.sh | sh
-
-# 2. Initialize your master folder (discovers child repos, installs hooks, starts the daemon)
-cd /path/to/your/master/folder
-sp init
-
-# 3. Attach an agent
-sp shell --agent agent_1
-```
-
-That is the whole setup. `sp init` writes the agent scaffolds, so your agent
-already knows the rules.
-
-<details>
-<summary><b>Build from source instead</b></summary>
-
-```sh
-git clone https://github.com/saksham-sin/scratchpost
-cd scratchpost
-cargo build --release
-install -m755 target/release/sp /usr/local/bin/sp
-```
-
-Requires Rust 1.75+. No Node, no Python runtime, no network access at runtime.
 </details>
 
-> [!IMPORTANT]
-> **macOS and Linux only.** ScratchPost does not build on Windows today — the
-> IPC layer uses Unix domain sockets, the daemon lock uses `flock`, and the
-> `git` shim is a symlink. See [Platform support](#platform-support).
+## The solution
 
-## How it works
+### Give every agent its own lane.
 
-### 1. Every agent gets a real worktree
+| | | |
+|---|---|---|
+| **Isolated workspaces** | **Dedicated test ports** | **Smart commit gate** |
+| Separate folder & branch per agent. | Zero port clashes. | Blocks duplicate IDs before commit. |
 
-No shared `HEAD` means no branch to hijack. Ten agents cost one repository's
-worth of objects, not ten.
+No shared `HEAD` means no branch to hijack. Ten agents cost one repository's worth of objects, not ten.
 
 ```text
 /workspace/auth-service                                          8b9205f [main]
@@ -116,8 +88,7 @@ worth of objects, not ten.
 ...
 ```
 
-Each session also gets a disjoint port band, so ten concurrent `npm test` runs
-do not fight over 8080:
+Each session also gets a disjoint port band, so ten concurrent `npm test` runs do not fight over 8080:
 
 | Variable | agent_1 | agent_2 | agent_10 |
 |---|---|---|---|
@@ -125,11 +96,16 @@ do not fight over 8080:
 | `SERVER_PORT` | 31000 | 31100 | 31900 |
 | `COMPOSE_PROJECT_NAME` | `sp_agent_1_1` | `sp_agent_2_2` | `sp_agent_10_10` |
 
-### 2. The commit gate understands sequences
+## How it works
 
-When an agent commits, the daemon parses the staged tree with deterministic rule
-engines and compares it against the sequence registry and the merge base. No
-model, no heuristic, no API call.
+### Agents fix their own conflicts.
+
+| | | |
+|---|---|---|
+| **1. Agent 1 claims ID 200** | **2. Agent 2 tries ID 200 — blocked** | **3. Agent 2 switches to 201** |
+| It commits. All good. | ScratchPost replies: *"200 is taken, use 201."* | It commits with zero human help. |
+
+When an agent commits, the daemon parses the staged tree with deterministic rule engines and compares it against the sequence registry and the merge base. No model, no heuristic, no API call.
 
 ```mermaid
 sequenceDiagram
@@ -153,10 +129,7 @@ sequenceDiagram
     end
 ```
 
-### 3. A blocked commit is a repair instruction, not an error
-
-The agent does not need to reason about the conflict. It needs to run three
-commands. This is the real stderr, unabridged:
+A blocked commit is a **repair instruction**, not an error. The agent does not need to reason about the conflict — it needs to run three commands. This is the real stderr, unabridged:
 
 ```text
 SP_BLOCKED v1 code=SP_SEQUENCE_COLLISION conflict_id=0343007fad240001
@@ -191,14 +164,40 @@ RETRY CONTRACT
 SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_SEQUENCE_COLLISION", ... }
 ```
 
-The last line is the machine contract. In the ten-agent run, agents 2 through 10
-each parse it, resequence, and retry — landing on `201` through `209` with zero
-human input.
+The last line is the machine contract. In the ten-agent run, agents 2 through 10 each parse it, resequence, and retry — landing on `201` through `209` with zero human input.
 
-## Agent-first by design
+## Why it's fast
 
-ScratchPost is built for agents, not for humans typing commands. `sp init`
-scaffolds every harness, each pointing at one source of truth:
+### Tiny, fast, and free to run.
+
+| **869 KB** | **~3.6 MB** | **~2.9 ms** | **$0.00** |
+|:---:|:---:|:---:|:---:|
+| Tiny single file | Runs invisibly in background | Instant conflict checks | Zero extra LLM calls |
+
+| Metric | Value |
+|---|---|
+| Stripped release binary, macOS arm64 | **869 KB** |
+| Stripped release binary, Linux x86_64 | **1.13 MB** |
+| Daemon RSS, idle | **~3.6 MB** |
+| Daemon RSS, 10 concurrent agents | **~4.5 MB** |
+| Seqlock mmap status read | **~2.9 ms** |
+| Commit gate overhead | **~105 ms p50** |
+| External LLM API calls | **0** |
+
+The binary is larger on Linux because glibc pulls in more than libSystem; the same source, same profile (`opt-level="z"`, `lto="fat"`, `strip="symbols"`).
+
+The gate overhead is above the original 50 ms target — atomic subprocess plumbing and WAL fsync. It is documented honestly rather than hidden; see [DEMO_REPORT.md](DEMO_REPORT.md) §7.1.
+
+## Works with your tools
+
+### Plugs into your existing tools.
+
+| | | |
+|---|---|---|
+| **Claude Code, Cursor & GitHub Copilot** | **Live web dashboard** | **Auto-generated audit log** |
+| Native support, your agents plug in out of the box. | Watch every agent and conflict in real time, in your browser. | Every allowed, blocked and fixed change is recorded for you. |
+
+ScratchPost is built for agents, not for humans typing commands. `sp init` scaffolds every harness, each pointing at one source of truth:
 
 | File | Harness |
 |---|---|
@@ -208,10 +207,10 @@ scaffolds every harness, each pointing at one source of truth:
 | `.cursorrules` | Cursor IDE |
 | `.claude/skills/scratchpost/` | Claude Code skill |
 
-Paste the bootstrap prompt once and the agent knows: attach to a session, never
-invent a sequence number, and how to parse `SP_BLOCKED`.
+Paste the bootstrap prompt once and the agent knows: attach to a session, never invent a sequence number, and how to parse `SP_BLOCKED`.
 
-### MCP
+<details>
+<summary><b>MCP stdio server — <code>sp --mcp</code></b></summary>
 
 Shell-less agents use `sp --mcp` (JSON-RPC over stdio):
 
@@ -224,14 +223,14 @@ Shell-less agents use `sp --mcp` (JSON-RPC over stdio):
 | `sp_commit` | Commit through the same gate as the Git shim |
 | `sp_notices` · `sp_sequence_next` · `sp_sync` · `sp_config_set` · `sp_evict` | The rest of the surface |
 
-A blocked tool returns `isError: true` with the identical `sp.conflict.v1`
-contract in `structuredContent` — the same payload the CLI prints.
+A blocked tool returns `isError: true` with the identical `sp.conflict.v1` contract in `structuredContent` — the same payload the CLI prints.
 
-## Mission Control
+</details>
 
-`sp ui` serves an embedded dashboard on `http://127.0.0.1:19200`. No external
-assets, no CDN, no network. It streams state over SSE from the same seqlock mmap
-snapshot the agents read.
+<details>
+<summary><b>Mission Control — <code>sp ui</code></b></summary>
+
+`sp ui` serves an embedded dashboard on `http://127.0.0.1:19200`. No external assets, no CDN, no network. It streams state over SSE from the same seqlock mmap snapshot the agents read.
 
 | Panel | What it shows |
 |---|---|
@@ -240,7 +239,16 @@ snapshot the agents read.
 | **Sequence registry** | Every claim: rule engine, namespace, key, state |
 | **Operator overrides** | Live mode switching, barrier release, agent eviction — no restart |
 
-## Coordination modes
+<div align="center">
+<img src="demo-artifacts/screenshots/03-ten-agent-mission-control.png" alt="Mission Control with ten agent lanes, a mergeability radar, and the live sequence registry" width="900">
+<br/>
+<sub>Mission Control: ten live agent lanes, the mergeability radar, and the sequence registry reading <code>200, 201, 202 … 209</code> — the ten agents, ordered.</sub>
+</div>
+
+</details>
+
+<details>
+<summary><b>Coordination modes</b></summary>
 
 ```sh
 sp config --mode fcfs                 # first-come-first-serve, live broadcast to peers
@@ -249,27 +257,43 @@ sp config --mode barrier-integration  # all branches merge into one integration 
 sp config --barrier-scope component   # only agents touching overlapping paths wait
 ```
 
-Mode changes apply immediately — the daemon updates the seqlock snapshot and the
-UI reflects it without a restart.
+Mode changes apply immediately — the daemon updates the seqlock snapshot and the UI reflects it without a restart.
 
-## Performance
+</details>
 
-| Metric | Value |
-|---|---|
-| Stripped release binary, macOS arm64 | **869 KB** |
-| Stripped release binary, Linux x86_64 | **1.13 MB** |
-| Daemon RSS, idle | **~3.6 MB** |
-| Daemon RSS, 10 concurrent agents | **~4.5 MB** |
-| Seqlock mmap status read | **~2.9 ms** |
-| Commit gate overhead | **~105 ms p50** |
-| External LLM API calls | **0** |
+## Get started
 
-The binary is larger on Linux because glibc pulls in more than libSystem; the
-same source, same profile (`opt-level="z"`, `lto="fat"`, `strip="symbols"`).
+```sh
+# 1. Install
+curl -sSL https://raw.githubusercontent.com/saksham-sin/scratchpost/main/install.sh | sh
 
-The gate overhead is above the original 50 ms target — atomic subprocess plumbing
-and WAL fsync. It is documented honestly rather than hidden; see
-[DEMO_REPORT.md](DEMO_REPORT.md) §7.1.
+# 2. Initialize your master folder (discovers child repos, installs hooks, starts the daemon)
+cd /path/to/your/master/folder
+sp init
+
+# 3. Attach an agent
+sp shell --agent agent_1
+```
+
+That is the whole setup. `sp init` writes the agent scaffolds, so your agent already knows the rules.
+
+<details>
+<summary><b>Build from source instead</b></summary>
+
+```sh
+git clone https://github.com/saksham-sin/scratchpost
+cd scratchpost
+cargo build --release
+install -m755 target/release/sp /usr/local/bin/sp
+```
+
+Requires Rust 1.75+. No Node, no Python runtime, no network access at runtime.
+</details>
+
+> [!IMPORTANT]
+> **macOS and Linux only.** ScratchPost does not build on Windows today — the
+> IPC layer uses Unix domain sockets, the daemon lock uses `flock`, and the
+> `git` shim is a symlink. See [Platform support](#platform-support).
 
 ## Platform support
 
@@ -279,9 +303,7 @@ and WAL fsync. It is documented honestly rather than hidden; see
 | Linux (x86_64, aarch64) | **Supported**, tested in CI |
 | Windows | **Not supported** — does not compile |
 
-Windows is not a configuration gap; it is a port that has not been done. The
-current source fails to build for `x86_64-pc-windows-msvc` with 16 errors, all
-from Unix-only APIs:
+Windows is not a configuration gap; it is a port that has not been done. The current source fails to build for `x86_64-pc-windows-msvc` with 16 errors, all from Unix-only APIs:
 
 | Blocker | Where | Why it is load-bearing |
 |---|---|---|
@@ -292,20 +314,11 @@ from Unix-only APIs:
 | `std::os::unix::fs::symlink` | `src/workspace.rs` | The `sp` / `git` shim links |
 | `#!/bin/sh` hook bodies | `src/workspace.rs` | The commit gate itself |
 
-Two further assumptions would need auditing even after those compile:
-`PATH` is split on `':'` (`src/git_engine.rs`, `src/shim.rs`), and the socket
-lives under `/tmp`. `install.sh` is POSIX `sh` and needs WSL or Git Bash.
+Two further assumptions would need auditing even after those compile: `PATH` is split on `':'` (`src/git_engine.rs`, `src/shim.rs`), and the socket lives under `/tmp`. `install.sh` is POSIX `sh` and needs WSL or Git Bash.
 
-What already works unchanged: the copy-on-write path degrades to `fs::copy` via
-its `#[cfg(not(any(target_os = "macos", target_os = "linux")))]` arm, Git is
-invoked with an explicit argument vector and no shell, and the seqlock ledger is
-portable.
+What already works unchanged: the copy-on-write path degrades to `fs::copy` via its `#[cfg(not(any(target_os = "macos", target_os = "linux")))]` arm, Git is invoked with an explicit argument vector and no shell, and the seqlock ledger is portable.
 
-If you want Windows support, the work is roughly: an `ipc` module with
-`#[cfg]`-gated named-pipe and Unix-socket implementations behind one trait,
-`LockFileEx` for the daemon lock, `.cmd` shims instead of symlinks, a per-user
-state directory instead of `getuid`, and a `windows-latest` CI job. Open an
-issue if you want to take it on.
+If you want Windows support, the work is roughly: an `ipc` module with `#[cfg]`-gated named-pipe and Unix-socket implementations behind one trait, `LockFileEx` for the daemon lock, `.cmd` shims instead of symlinks, a per-user state directory instead of `getuid`, and a `windows-latest` CI job. Open an issue if you want to take it on.
 
 ## Documentation
 
@@ -363,21 +376,13 @@ bash scripts/chaos-control.sh # the same failures without ScratchPost
 bash scripts/bench.sh         # regenerate the scorecard on your hardware
 ```
 
-Every number in this README is regenerated by one of those scripts. Nothing is
-hand-entered.
+Every number in this README is regenerated by one of those scripts. Nothing is hand-entered.
 
 ## Security model
 
-The shim snapshots the index and passes an immutable `GIT_INDEX_FILE` to the real
-Git process; the daemon binds a short-lived `CommitPermit` to that tree, and
-managed `pre-commit`/`pre-push` hooks reject unmanaged Git invocations. This
-stops accidental agent bypasses and TOCTOU index changes.
+The shim snapshots the index and passes an immutable `GIT_INDEX_FILE` to the real Git process; the daemon binds a short-lived `CommitPermit` to that tree, and managed `pre-commit`/`pre-push` hooks reject unmanaged Git invocations. This stops accidental agent bypasses and TOCTOU index changes.
 
-ScratchPost is a **coordination** tool, not a sandbox. As with any user-level Git
-hook, an agent that invokes the real Git binary with `--no-verify` can bypass
-hooks — run agents inside `sp shell` so the shim is authoritative. It
-intentionally does not attempt kernel-level isolation. See
-[SECURITY.md](SECURITY.md).
+ScratchPost is a **coordination** tool, not a sandbox. As with any user-level Git hook, an agent that invokes the real Git binary with `--no-verify` can bypass hooks — run agents inside `sp shell` so the shim is authoritative. It intentionally does not attempt kernel-level isolation. See [SECURITY.md](SECURITY.md).
 
 ## License
 
