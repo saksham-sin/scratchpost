@@ -251,12 +251,16 @@ UI reflects it without a restart.
 
 | Metric | Value |
 |---|---|
-| Stripped release binary | **869 KB** |
+| Stripped release binary, macOS arm64 | **869 KB** |
+| Stripped release binary, Linux x86_64 | **1.13 MB** |
 | Daemon RSS, idle | **~3.6 MB** |
 | Daemon RSS, 10 concurrent agents | **~4.5 MB** |
 | Seqlock mmap status read | **~2.9 ms** |
 | Commit gate overhead | **~105 ms p50** |
 | External LLM API calls | **0** |
+
+The binary is larger on Linux because glibc pulls in more than libSystem; the
+same source, same profile (`opt-level="z"`, `lto="fat"`, `strip="symbols"`).
 
 The gate overhead is above the original 50 ms target — atomic subprocess plumbing
 and WAL fsync. It is documented honestly rather than hidden; see

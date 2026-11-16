@@ -72,7 +72,8 @@ for parallel coding agents.
 
 ### Performance
 
-- Stripped release binary: 889,536 bytes (869 KB).
+- Stripped release binary: 889,536 bytes (869 KB) on macOS arm64, ~1.13 MB on
+  Linux x86_64 (glibc links more than libSystem).
 - Daemon RSS: ~3.6 MB idle, ~4.5 MB with ten concurrent agents.
 - Seqlock mmap status reads: ~2.9 ms.
 - Zero external LLM API calls.
