@@ -1,4 +1,5 @@
 use crate::protocol::{now_ms, Config, Endpoint};
+#[cfg(target_os = "macos")]
 use std::ffi::CString;
 #[cfg(target_os = "linux")]
 use std::fs::OpenOptions;
