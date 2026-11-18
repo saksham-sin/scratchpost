@@ -1,27 +1,27 @@
-SP_NOTICE v1 seq=53 severity=info kind=commit-permit agent=agent_2 message=commit permit d3943516dd37453b2ce9f4b89135cf91 issued for payment-service (1 sequence claim(s))
-SP_NOTICE v1 seq=54 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed payment-service (e3b6eb3545afd4823822ece7d52147873e6836d3); peers must rebase before publication
-SP_NOTICE v1 seq=28 severity=info kind=mutation-published agent=agent_3 message=agent agent_3 committed auth-service (9412d7e4c94ba8d6bf3d517e88084cded83dd630); peers must rebase before publication
+SP_NOTICE v1 seq=53 severity=info kind=commit-permit agent=agent_2 message=commit permit ad4214f8a39936658d5a6f1019caf631 issued for payment-service (1 sequence claim(s))
+SP_NOTICE v1 seq=54 severity=info kind=mutation-published agent=agent_2 message=agent agent_2 committed payment-service (ffbc087f360ccd31bc29359a68507c18116ee7da); peers must rebase before publication
+SP_NOTICE v1 seq=28 severity=info kind=mutation-published agent=agent_3 message=agent agent_3 committed auth-service (0ca9a738abe1f09dce02f669b97c45a587bf135c); peers must rebase before publication
 SP_NOTICE v1 seq=29 severity=info kind=sequence-resequenced agent=agent_4 message=agent agent_4 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 203 and staged it
-SP_NOTICE v1 seq=30 severity=info kind=commit-permit agent=agent_4 message=commit permit 57904a8a664b048216fc64660b07cf22 issued for auth-service (1 sequence claim(s))
-SP_NOTICE v1 seq=31 severity=info kind=mutation-published agent=agent_4 message=agent agent_4 committed auth-service (25805eca6aad70e92ef9decaab61ef76a442f47f); peers must rebase before publication
+SP_NOTICE v1 seq=30 severity=info kind=commit-permit agent=agent_4 message=commit permit 352425b41c52db301cf0e84eb5b79501 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=31 severity=info kind=mutation-published agent=agent_4 message=agent agent_4 committed auth-service (7fefb6e9d8724680fc20aac33bac15c71aa7ca2d); peers must rebase before publication
 SP_NOTICE v1 seq=32 severity=info kind=sequence-resequenced agent=agent_5 message=agent agent_5 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 204 and staged it
-SP_NOTICE v1 seq=33 severity=info kind=commit-permit agent=agent_5 message=commit permit ba03beed077fdff1604e7ebd12760ecd issued for auth-service (1 sequence claim(s))
-SP_NOTICE v1 seq=34 severity=info kind=mutation-published agent=agent_5 message=agent agent_5 committed auth-service (60b5530f83d97cebe90eb403dd1e03099501f125); peers must rebase before publication
+SP_NOTICE v1 seq=33 severity=info kind=commit-permit agent=agent_5 message=commit permit b4a7ede7ee63262615f4b1fb274d3580 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=34 severity=info kind=mutation-published agent=agent_5 message=agent agent_5 committed auth-service (80d91bb91b2a870ee3a7e74cefa33f1664195ffe); peers must rebase before publication
 SP_NOTICE v1 seq=35 severity=info kind=sequence-resequenced agent=agent_6 message=agent agent_6 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 205 and staged it
-SP_NOTICE v1 seq=36 severity=info kind=commit-permit agent=agent_6 message=commit permit c12fc96f182c8be3995e78fc06891448 issued for auth-service (1 sequence claim(s))
-SP_NOTICE v1 seq=37 severity=info kind=mutation-published agent=agent_6 message=agent agent_6 committed auth-service (1cf25f85ad136859df29ed825506b8d3335fbba0); peers must rebase before publication
+SP_NOTICE v1 seq=36 severity=info kind=commit-permit agent=agent_6 message=commit permit 69f5d0049aa69116ee8ff2a4f180584c issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=37 severity=info kind=mutation-published agent=agent_6 message=agent agent_6 committed auth-service (273c102dacf48dac599808b5e02b57455cdcf85c); peers must rebase before publication
 SP_NOTICE v1 seq=38 severity=info kind=sequence-resequenced agent=agent_7 message=agent agent_7 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 206 and staged it
-SP_NOTICE v1 seq=39 severity=info kind=commit-permit agent=agent_7 message=commit permit 1c40aab8bb8739b117c238ce93334462 issued for auth-service (1 sequence claim(s))
-SP_NOTICE v1 seq=40 severity=info kind=mutation-published agent=agent_7 message=agent agent_7 committed auth-service (61cb626cabdf8b669548be484d2c4b05a273cc16); peers must rebase before publication
+SP_NOTICE v1 seq=39 severity=info kind=commit-permit agent=agent_7 message=commit permit 3a1d413eb70003b8bbe69fe47046cccf issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=40 severity=info kind=mutation-published agent=agent_7 message=agent agent_7 committed auth-service (dca9e74931db9ef854251729bc996a545e8c8276); peers must rebase before publication
 SP_NOTICE v1 seq=41 severity=info kind=sequence-resequenced agent=agent_8 message=agent agent_8 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 207 and staged it
-SP_NOTICE v1 seq=42 severity=info kind=commit-permit agent=agent_8 message=commit permit 872b67aabf3be964bd188babf475d6f5 issued for auth-service (1 sequence claim(s))
-SP_NOTICE v1 seq=43 severity=info kind=mutation-published agent=agent_8 message=agent agent_8 committed auth-service (6a64990ec6bcfb97e6d5ced2e7a053dc8ebb9ec6); peers must rebase before publication
+SP_NOTICE v1 seq=42 severity=info kind=commit-permit agent=agent_8 message=commit permit a50e54910ff9a9e836485deb69692497 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=43 severity=info kind=mutation-published agent=agent_8 message=agent agent_8 committed auth-service (f55a58dbedc978978408e011cb4bc7345e53e32a); peers must rebase before publication
 SP_NOTICE v1 seq=44 severity=info kind=sequence-resequenced agent=agent_9 message=agent agent_9 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 208 and staged it
-SP_NOTICE v1 seq=45 severity=info kind=commit-permit agent=agent_9 message=commit permit 0a4aa6ae4dea93445c73891063578d37 issued for auth-service (1 sequence claim(s))
-SP_NOTICE v1 seq=46 severity=info kind=mutation-published agent=agent_9 message=agent agent_9 committed auth-service (aa522891becda17ea0aa1461b484046d6a0bfd0c); peers must rebase before publication
+SP_NOTICE v1 seq=45 severity=info kind=commit-permit agent=agent_9 message=commit permit abfd079359c5ea5843fd39823e9803b7 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=46 severity=info kind=mutation-published agent=agent_9 message=agent agent_9 committed auth-service (00d82976ad2a8ee8991b7fc3732545262b0f4ec1); peers must rebase before publication
 SP_NOTICE v1 seq=47 severity=info kind=sequence-resequenced agent=agent_10 message=agent agent_10 resequenced auth-service/src/main/resources/db/dbchangelog.xml from 200 to 209 and staged it
-SP_BLOCKED v1 code=SP_SEQUENCE_COLLISION conflict_id=03433c28eac6000b
-agent=agent_3 repo=payment-service branch=sp/agent_3/1a1e592221f operation=git.commit
+SP_BLOCKED v1 code=SP_SEQUENCE_COLLISION conflict_id=034336f1f8d2000b
+agent=agent_3 repo=payment-service branch=sp/agent_3/1a1efcfd706 operation=git.commit
 
 Your commit was NOT created. A deterministic repository check failed.
 This is a coordination conflict, not a transient Git error.
@@ -34,7 +34,7 @@ EVIDENCE
   requested value: 101
   reserved by: agent_1 (intent/claim 11)
   lowest_free: 103
-  base: 790863959f2dec3000926fa5de6143296e502d5d
+  base: 656917b2486a62fc1e1a4006f081069465b20c3c
   conflicting paths: src/main/resources/db/migration/V101__agent_3.sql
   detail: sequence namespace payment-service:src/main/resources/db/migration is already reserved
 
@@ -61,6 +61,6 @@ FORBIDDEN
   - editing .scratchpost state
   - force-pushing another agent branch
 
-SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_SEQUENCE_COLLISION","conflict_id":"03433c28eac6000b","operation":"git.commit","agent":"agent_3","repo":"payment-service","branch":"sp/agent_3/1a1e592221f","base_oid":"790863959f2dec3000926fa5de6143296e502d5d","head_oid":"790863959f2dec3000926fa5de6143296e502d5d","paths":["src/main/resources/db/migration/V101__agent_3.sql"],"evidence":{"kind":"sequence_collision","rule":"flyway.versioned_migration","namespace":"payment-service:src/main/resources/db/migration","path":"src/main/resources/db/migration/V101__agent_3.sql","line":1,"requested":"101","holder":"agent_1 (intent/claim 11)","holder_intent":11,"lowest_free":"103","base_oid":"790863959f2dec3000926fa5de6143296e502d5d","target_oid":null,"conflicting_paths":["src/main/resources/db/migration/V101__agent_3.sql"],"detail":"sequence namespace payment-service:src/main/resources/db/migration is already reserved"},"resolution":{"summary":"Reassign the duplicate sequence value and retry the commit.","steps":[{"ordinal":1,"action":"Change the value at src/main/resources/db/migration/V101__agent_3.sql:1 from 101 to 103.","command":"sp resequence --agent agent_3 --file payment-service/src/main/resources/db/migration/V101__agent_3.sql --from 101 --to 103"},{"ordinal":2,"action":"Re-stage the edited file.","command":"git -C payment-service add -- src/main/resources/db/migration/V101__agent_3.sql"},{"ordinal":3,"action":"Retry the original commit.","command":"git commit -m \"<your original message>\""}],"safe_retry_command":null,"forbidden_actions":["git commit --no-verify","editing .scratchpost state","force-pushing another agent branch"]},"retry":{"mode":"rerun_original_command","idempotent":true,"retry_after_ms":null,"max_attempts":3,"validation":"automatic_on_retry"}}
+SP_CONFLICT_JSON={"schema":"sp.conflict.v1","code":"SP_SEQUENCE_COLLISION","conflict_id":"034336f1f8d2000b","operation":"git.commit","agent":"agent_3","repo":"payment-service","branch":"sp/agent_3/1a1efcfd706","base_oid":"656917b2486a62fc1e1a4006f081069465b20c3c","head_oid":"656917b2486a62fc1e1a4006f081069465b20c3c","paths":["src/main/resources/db/migration/V101__agent_3.sql"],"evidence":{"kind":"sequence_collision","rule":"flyway.versioned_migration","namespace":"payment-service:src/main/resources/db/migration","path":"src/main/resources/db/migration/V101__agent_3.sql","line":1,"requested":"101","holder":"agent_1 (intent/claim 11)","holder_intent":11,"lowest_free":"103","base_oid":"656917b2486a62fc1e1a4006f081069465b20c3c","target_oid":null,"conflicting_paths":["src/main/resources/db/migration/V101__agent_3.sql"],"detail":"sequence namespace payment-service:src/main/resources/db/migration is already reserved"},"resolution":{"summary":"Reassign the duplicate sequence value and retry the commit.","steps":[{"ordinal":1,"action":"Change the value at src/main/resources/db/migration/V101__agent_3.sql:1 from 101 to 103.","command":"sp resequence --agent agent_3 --file payment-service/src/main/resources/db/migration/V101__agent_3.sql --from 101 --to 103"},{"ordinal":2,"action":"Re-stage the edited file.","command":"git -C payment-service add -- src/main/resources/db/migration/V101__agent_3.sql"},{"ordinal":3,"action":"Retry the original commit.","command":"git commit -m \"<your original message>\""}],"safe_retry_command":null,"forbidden_actions":["git commit --no-verify","editing .scratchpost state","force-pushing another agent branch"]},"retry":{"mode":"rerun_original_command","idempotent":true,"retry_after_ms":null,"max_attempts":3,"validation":"automatic_on_retry"}}
 
 Exit status: 1

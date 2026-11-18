@@ -9,4 +9,4 @@ SP_NOTICE v1 seq=8 severity=info kind=session-active agent=agent_7 message=agent
 SP_NOTICE v1 seq=9 severity=info kind=session-active agent=agent_8 message=agent agent_8 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_8/workspace with port base 31700
 SP_NOTICE v1 seq=10 severity=info kind=session-active agent=agent_9 message=agent agent_9 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_9/workspace with port base 31800
 SP_NOTICE v1 seq=11 severity=info kind=session-active agent=agent_10 message=agent agent_10 attached in /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_10/workspace with port base 31900
-SP_NOTICE v1 seq=12 severity=info kind=commit-permit agent=agent_1 message=commit permit dead19e1ad04171d00aa7524dbdff0a3 issued for auth-service (1 sequence claim(s))
+SP_NOTICE v1 seq=12 severity=info kind=commit-permit agent=agent_1 message=commit permit 3e2f75694dcde8f6a80bf82c928cb695 issued for auth-service (1 sequence claim(s))

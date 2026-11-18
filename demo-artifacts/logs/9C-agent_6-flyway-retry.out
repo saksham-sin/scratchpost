@@ -1,11 +1,11 @@
 🐈 ScratchPost · session
   agent agent_6
-  session    agent_6-1a1e5922f16
+  session    agent_6-1a1efcfae62
   slot       6
   port_base  31500
   workspace  /private/tmp/sp-ten-agent-sim/.scratchpost/sessions/agent_6/workspace
-  repo auth-service path=auth-service branch=sp/agent_6/1a1e5922f16 base=af2cbf2cc9db
-  repo payment-service path=payment-service branch=sp/agent_6/1a1e5922f16 base=790863959f2d
-[sp/agent_6/1a1e5922f16 6448f03] agent_6 adds V106
+  repo auth-service path=auth-service branch=sp/agent_6/1a1efcfae62 base=e7e4f83ec7bd
+  repo payment-service path=payment-service branch=sp/agent_6/1a1efcfae62 base=656917b2486a
+[sp/agent_6/1a1efcfae62 6c425fb] agent_6 adds V106
  1 file changed, 1 insertion(+)
  create mode 100644 src/main/resources/db/migration/V106__agent_6.sql

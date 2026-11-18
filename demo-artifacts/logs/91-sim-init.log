@@ -17,6 +17,7 @@ initialized /private/tmp/sp-ten-agent-sim/.scratchpost
 discovered 2 repository(ies)
 
 next
-  1. paste scratchpost-agent-prompt.md into your agent's chat
-  2. the agent attaches itself with sp run --agent <name> -- bash
+  1. attach scratchpost-agent-prompt.md to your agent's chat
+  2. ask the agent to pick this workspace up and follow the contract
+     it attaches itself with sp run --agent <name> -- bash
   3. watch what the daemon does in RUNNING_REPORT.md

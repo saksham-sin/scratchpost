@@ -1,4 +1,5 @@
 {
   "agent": "agent_11",
-  "evicted": true
+  "evicted": true,
+  "reclaimed_bytes": 27436
 }

@@ -6,9 +6,9 @@
       ],
       "barrier_id": 1,
       "component": "agent_1+agent_2",
-      "deadline_ms": 1794853000466,
+      "deadline_ms": 1795024800843,
       "open": false,
-      "opened_ms": 1794852980466,
+      "opened_ms": 1795024780843,
       "participants": [
         "agent_1",
         "agent_2"
@@ -21,9 +21,9 @@
       ],
       "barrier_id": 1,
       "component": "agent_1+agent_2+agent_3",
-      "deadline_ms": 1794853000610,
+      "deadline_ms": 1795024801807,
       "open": false,
-      "opened_ms": 1794852980610,
+      "opened_ms": 1795024781807,
       "participants": [
         "agent_1",
         "agent_2",

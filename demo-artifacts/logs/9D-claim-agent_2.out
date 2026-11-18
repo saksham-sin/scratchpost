@@ -3,8 +3,8 @@ SP_NOTICE v1 seq=79 severity=info kind=path-claimed agent=agent_1 message=agent 
   "claim": {
     "agent": "agent_2",
     "claim_id": 2,
-    "created_ms": 1794852979298,
-    "expires_ms": 1794853279298,
+    "created_ms": 1795024774001,
+    "expires_ms": 1795025074001,
     "note": "agent_2 reads User.java",
     "path": "src/main/java/com/demo/auth/User.java",
     "repo": "auth-service",

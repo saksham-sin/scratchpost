@@ -438,8 +438,9 @@ import json, sys
 before = {s["agent"]: s["status"] for s in json.load(open(sys.argv[1]))["sessions"]}
 after = {s["agent"]: s["status"] for s in json.load(open(sys.argv[2]))["sessions"]}
 assert before.get("agent_11") == "active", before
-assert after.get("agent_11") == "abandoned", after
-print("  ok: stalled agent_11 lease revoked without blocking peers")
+assert "agent_11" not in after, after
+assert len(after) == len(before) - 1, (len(before), len(after))
+print("  ok: stalled agent_11 evicted and reclaimed without blocking peers")
 PY
 pass "abandoned session recovery verified"
 
