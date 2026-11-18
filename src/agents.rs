@@ -71,6 +71,17 @@ Your session exports these variables; use them instead of hardcoding ports:
 | `COMPOSE_PROJECT_NAME` | unique Docker Compose project name |
 | `TMPDIR` | your private temporary directory |
 
+`COMPOSE_PROJECT_NAME` isolates Compose services, but it cannot override a
+`container_name:` pinned in the compose file. If the daemon warned
+`compose-isolation-degraded` at attach time, those containers — and the database
+behind them — are shared with other agents. Treat shared state as read-only or
+give the service its own database name before writing test rows.
+
+Gitignored local configuration (`application-dev.yaml`, `.env`, keystores) is
+copied into your workspace at attach time; the list is in
+`.scratchpost/sessions/<agent>/local-config.txt`. If a service still fails on a
+missing credential, check that file before assuming a code bug.
+
 ## 2. Never commit without validating sequence rules
 
 Liquibase `changeSet id` values and Flyway `V<version>__` filenames are **global

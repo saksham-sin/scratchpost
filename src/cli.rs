@@ -500,10 +500,34 @@ fn status_command(master: &Path, args: &[String]) -> i32 {
             .get("workspace")
             .and_then(Value::as_str)
             .unwrap_or("-");
+        let status = session
+            .get("status")
+            .and_then(Value::as_str)
+            .unwrap_or("unknown");
+        let remaining = session
+            .get("lease_remaining_ms")
+            .and_then(Value::as_u64)
+            .unwrap_or(0);
+        let unpreserved = session
+            .get("has_unpreserved_work")
+            .and_then(Value::as_bool)
+            .unwrap_or(false);
+        let lease = if status == "active" {
+            format!("lease {}s", remaining / 1000)
+        } else {
+            "lease expired".to_string()
+        };
+        let work = if unpreserved {
+            " · unpreserved work"
+        } else {
+            ""
+        };
         println!(
             "  {} {}",
             style.bold(agent),
-            style.dim(&format!("slot {slot} · port {port} · {branch}"))
+            style.dim(&format!(
+                "slot {slot} · port {port} · {branch} · {lease}{work}"
+            ))
         );
         println!("    {}", style.dim(workspace));
     }

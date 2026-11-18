@@ -242,6 +242,8 @@ mod tests {
                 last_heartbeat_ms: n,
                 status: SessionStatus::Active,
                 repos: Vec::new(),
+                lease_remaining_ms: 0,
+                has_unpreserved_work: false,
             }],
             claims: Vec::new(),
             intents: Vec::new(),

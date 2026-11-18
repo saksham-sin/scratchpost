@@ -119,6 +119,14 @@ pub struct SessionRecord {
     pub last_heartbeat_ms: u64,
     pub status: SessionStatus,
     pub repos: Vec<SessionRepo>,
+    /// Milliseconds until the lease expires, computed when the snapshot is
+    /// published. `0` means the lease has already lapsed. Not persisted.
+    #[serde(default)]
+    pub lease_remaining_ms: u64,
+    /// True when the session holds uncommitted edits or unpushed commits, so a
+    /// reader can tell "idle" from "has work in flight". Not persisted.
+    #[serde(default)]
+    pub has_unpreserved_work: bool,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]

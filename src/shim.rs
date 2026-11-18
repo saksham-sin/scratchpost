@@ -333,6 +333,11 @@ pub fn run_hook(name: &str, _args: &[String]) -> i32 {
         if std::env::var("SP_MANAGED_GATE").ok().as_deref() != Some("1") {
             eprintln!("SP_BLOCKED v1 code=SP_GIT_INVOCATION_REJECTED conflict_id=0000000000000000");
             eprintln!("pushes must originate from the managed ScratchPost git shim");
+            eprintln!(
+                "the shim was bypassed, usually because a login shell (`bash -lc`) reset PATH; \
+                 run the command through `sp run --agent <name> -- <command>` or use a \
+                 non-login shell (`bash -c`) so the managed git shim stays first on PATH"
+            );
             eprintln!("Exit status: 1");
             return 1;
         }

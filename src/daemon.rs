@@ -217,7 +217,20 @@ impl Daemon {
     }
 
     fn snapshot(&mut self) -> LedgerSnapshot {
-        let mut sessions: Vec<SessionRecord> = self.sessions.values().cloned().collect();
+        let now = now_ms();
+        let timeout = self.config.lease_timeout_ms;
+        let mut sessions: Vec<SessionRecord> = self
+            .sessions
+            .values()
+            .map(|session| {
+                let mut session = session.clone();
+                let elapsed = now.saturating_sub(session.last_heartbeat_ms);
+                session.lease_remaining_ms = timeout.saturating_sub(elapsed);
+                session.has_unpreserved_work =
+                    session::has_unpreserved_work(&self.master, &session);
+                session
+            })
+            .collect();
         sessions.sort_by(|a, b| a.agent.cmp(&b.agent));
         let mut claims = self.claims.clone();
         claims.sort_by_key(|claim| claim.claim_id);
@@ -623,9 +636,14 @@ impl Daemon {
             .get(agent)
             .filter(|session| session.status == SessionStatus::Active)
             .ok_or_else(|| {
+                let hint = if self.sessions.contains_key(agent) {
+                    "its lease expired; re-attach with `sp run --agent <name> -- <command>` to revive it"
+                } else {
+                    "attach first with `sp run --agent <name> -- <command>` (or `sp shell --agent <name>`)"
+                };
                 (
                     "SP_SESSION_NOT_ATTACHED".to_string(),
-                    format!("no active session for agent {agent}"),
+                    format!("no active session for agent {agent}: {hint}"),
                 )
             })
     }
@@ -660,6 +678,38 @@ impl Daemon {
             }
             if existing.status == SessionStatus::Abandoned {
                 let old = existing.clone();
+                // A lease can expire while the agent is still mid-task. Re-attaching
+                // must never silently discard that work, and must not mint a second
+                // session under the same agent name: if the workspace is still on
+                // disk, revive the existing session in place so the branch, port band
+                // and session id stay stable across re-attaches.
+                if Path::new(&old.workspace).is_dir() {
+                    let unpreserved = session::has_unpreserved_work(&self.master, &old);
+                    let mut revived = old.clone();
+                    revived.status = SessionStatus::Active;
+                    revived.last_heartbeat_ms = now_ms();
+                    self.sessions.insert(agent.clone(), revived.clone());
+                    self.persist(WalEvent::Session {
+                        session: revived.clone(),
+                    });
+                    let detail = if unpreserved {
+                        "holding unpreserved work"
+                    } else {
+                        "workspace intact"
+                    };
+                    self.add_notice(
+                        Severity::Warning,
+                        "session-revived",
+                        Some(agent.clone()),
+                        format!(
+                            "agent {agent} re-attached to expired session {detail}; workspace preserved at {}",
+                            revived.workspace
+                        ),
+                        true,
+                    );
+                    self.publish();
+                    return Ok(revived);
+                }
                 session::remove_session_worktrees(&self.master, &old);
                 self.sessions.remove(&agent);
             }
@@ -692,6 +742,18 @@ impl Daemon {
             session::provision(&self.master, &agent, slot, port_base, session_id, branch_id)
                 .map_err(|message| ("SP_SESSION_PROVISION_FAILED".to_string(), message))?;
         let record = provisioned.session;
+        if !provisioned.pinned_containers.is_empty() {
+            self.add_notice(
+                Severity::Warning,
+                "compose-isolation-degraded",
+                Some(agent.clone()),
+                format!(
+                    "agent {agent}: COMPOSE_PROJECT_NAME cannot isolate containers pinned by name ({}); two sessions will share these containers and their databases",
+                    provisioned.pinned_containers.join("; ")
+                ),
+                true,
+            );
+        }
         self.sessions.insert(agent.clone(), record.clone());
         self.persist(WalEvent::Session {
             session: record.clone(),
@@ -1728,15 +1790,35 @@ impl Daemon {
                     self.persist(WalEvent::Session { session });
                 }
                 self.release_agent_claims(agent);
+                // Eviction is an operator action, so it reclaims the workspace and
+                // unregisters the worktrees. Leaving them behind strands disk space
+                // and, worse, stale registrations that block later checkouts.
+                let reclaimed = if let Some(session) = self.sessions.get(agent) {
+                    let session = session.clone();
+                    session::remove_session_worktrees(&self.master, &session);
+                    let dir = session::session_dir(&self.master, agent);
+                    let freed = workspace::dir_size(&dir);
+                    let _ = fs::remove_dir_all(&dir);
+                    self.sessions.remove(agent);
+                    Some(freed)
+                } else {
+                    None
+                };
                 self.add_notice(
                     Severity::Warning,
                     "session-evicted",
                     Some(agent.to_string()),
-                    format!("operator evicted agent {agent}"),
+                    match reclaimed {
+                        Some(bytes) => format!(
+                            "operator evicted agent {agent}; reclaimed {} and unregistered its worktrees",
+                            workspace::human_bytes(bytes)
+                        ),
+                        None => format!("operator evicted agent {agent}"),
+                    },
                     true,
                 );
                 self.publish();
-                Ok(json!({"evicted": true, "agent": agent}))
+                Ok(json!({"evicted": true, "agent": agent, "reclaimed_bytes": reclaimed}))
             }
             "session.refresh_base" => {
                 let Some(agent) = request

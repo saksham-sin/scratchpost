@@ -6,6 +6,39 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- **Re-attaching no longer destroys uncommitted work.** A lease can expire while
+  an agent is still mid-task. `sp run` used to re-provision the session, wiping
+  the workspace and minting a new branch and session id. An expired session whose
+  workspace is still on disk is now revived in place, so the branch, port band
+  and session id stay stable across re-attaches. A `session-revived` notice is
+  recorded when the workspace still holds unpreserved work.
+- **`sp evict` now reclaims disk and unregisters worktrees.** It previously only
+  marked the session abandoned, leaving the workspace and its `git worktree`
+  registrations behind; those stale registrations later blocked
+  `git worktree add` and `gh pr checkout` for other agents. Eviction now removes
+  the worktrees, deletes the session directory, and reports `reclaimed_bytes`.
+- **Single-repository workspaces unregister their worktree on teardown.** The
+  `relative_path == "."` case was skipped, leaving a prunable registration.
+- **Gitignored local configuration is copied into new worktrees.** A worktree
+  only materialises tracked files, so `application-dev.yaml`, `.env` and local
+  keystores were absent and services failed with errors that looked like code
+  bugs (`UnknownHostException: ${DB_HOST}`). Ignored files matching a narrow
+  config heuristic are now copied in, and the list is written to
+  `local-config.txt` in the session directory.
+- **Compose files that pin `container_name:` are reported at attach time.**
+  `COMPOSE_PROJECT_NAME` cannot isolate containers pinned by name, so two
+  sessions silently share the same database. The daemon now emits a
+  `compose-isolation-degraded` warning naming the offending files and containers.
+- **`sp status` reports lease state.** Sessions now carry `lease_remaining_ms`
+  and `has_unpreserved_work`, and the human view shows the remaining lease and
+  flags unpreserved work, so "idle" is distinguishable from "has work in flight".
+- **Actionable errors for unattached sessions and bypassed shims.**
+  `SP_SESSION_NOT_ATTACHED` now names the `sp run` invocation that fixes it, and
+  `SP_GIT_INVOCATION_REJECTED` on push explains that a login shell (`bash -lc`)
+  reset `PATH` past the managed git shim.
+
 ## [0.1.0] — 2026-11-16
 
 First public release. ScratchPost is a single-binary Rust workspace coordinator
