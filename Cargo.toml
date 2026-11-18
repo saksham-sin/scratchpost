@@ -1,6 +1,6 @@
 [package]
 name = "scratchpost"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Stop your parallel coding agents from scratching the same file"
 repository = "https://github.com/saksham-sin/scratchpost"

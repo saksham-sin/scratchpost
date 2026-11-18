@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-11-18
+
+Reliability release driven by two production agents that ran ScratchPost
+against a real multi-service workspace. The headline fix is that a lease
+expiring mid-task no longer destroys uncommitted work.
+
 ### Fixed
 
 - **Re-attaching no longer destroys uncommitted work.** A lease can expire while
@@ -125,5 +131,6 @@ for parallel coding agents.
   `git` shim all use Unix-only APIs. macOS and Linux only. See
   [README.md § Platform support](README.md#platform-support).
 
-[Unreleased]: https://github.com/saksham-sin/scratchpost/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/saksham-sin/scratchpost/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/saksham-sin/scratchpost/releases/tag/v0.2.0
 [0.1.0]: https://github.com/saksham-sin/scratchpost/releases/tag/v0.1.0

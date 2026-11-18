@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+
+jobs:
+  build:
+    name: build ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            target: aarch64-apple-darwin
+          - os: macos-latest
+            target: x86_64-apple-darwin
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+          - os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Cache cargo registry and build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ matrix.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ matrix.target }}-cargo-
+
+      - name: Build
+        run: cargo build --release --locked --target ${{ matrix.target }}
+
+      - name: Stage asset
+        run: |
+          set -eu
+          src="target/${{ matrix.target }}/release/sp"
+          dst="sp-${{ matrix.target }}"
+          cp "$src" "$dst"
+          chmod +x "$dst"
+          size=$(stat -f%z "$dst" 2>/dev/null || stat -c%s "$dst")
+          echo "asset $dst: ${size} bytes"
+          # The budget is per-platform; glibc links larger than libSystem.
+          budget=1572864
+          test "$size" -lt "$budget" || { echo "binary exceeds the ${budget}-byte budget"; exit 1; }
+          shasum -a 256 "$dst" > "$dst.sha256" 2>/dev/null || sha256sum "$dst" > "$dst.sha256"
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            sp-${{ matrix.target }}
+            sp-${{ matrix.target }}.sha256
+          fail_on_unmatched_files: true
