@@ -13,6 +13,8 @@
 #   SP_REPO         owner/name to install from (default: saksham-sin/scratchpost)
 #   SP_BASE_URL     release host (default: https://github.com); point this at an
 #                   internal mirror for air-gapped or rate-limited installs
+#   SP_REQUIRE_CHECKSUM  set to 1 to refuse installing when the release publishes
+#                   no SHA-256 checksum (default: warn and continue)
 
 set -eu
 
@@ -76,6 +78,19 @@ fetch() {
     fi
 }
 
+sha256_of() {
+    # sha256_of <file> -> lowercase hex digest on stdout
+    if have sha256sum; then
+        sha256sum "$1" | cut -d' ' -f1
+    elif have shasum; then
+        shasum -a 256 "$1" | cut -d' ' -f1
+    elif have openssl; then
+        openssl dgst -sha256 -r "$1" | cut -d' ' -f1
+    else
+        return 1
+    fi
+}
+
 # ------------------------------------------------------------------- install
 
 choose_install_dir() {
@@ -116,10 +131,12 @@ main() {
     else
         url="$BASE_URL/$REPO/releases/download/$VERSION/sp-$target"
     fi
+    sum_url="$url.sha256"
 
     tmp=$(mktemp "${TMPDIR:-/tmp}/sp-install.XXXXXX") || fail "cannot create a temporary file"
+    sum_tmp=$(mktemp "${TMPDIR:-/tmp}/sp-install-sum.XXXXXX") || fail "cannot create a temporary file"
     # shellcheck disable=SC2064
-    trap "rm -f '$tmp'" EXIT INT TERM
+    trap "rm -f '$tmp' '$sum_tmp'" EXIT INT TERM
 
     say "  ${DIM}download${RESET} $url"
     fetch "$url" "$tmp" || fail "could not download $url
@@ -133,6 +150,38 @@ main() {
     magic=$(head -c 4 "$tmp" | od -An -tx1 | tr -d ' \n')
     if [ "$magic" != "cffaedfe" ] && [ "$magic" != "7f454c46" ]; then
         fail "downloaded file is not a Mach-O or ELF executable (truncated download?)"
+    fi
+
+    # The magic bytes only prove the file is an executable, not that it is the
+    # executable we published. Verify the SHA-256 the release ships alongside it.
+    if ! fetch "$sum_url" "$sum_tmp" 2>/dev/null || [ ! -s "$sum_tmp" ]; then
+        if [ "${SP_REQUIRE_CHECKSUM:-0}" = "1" ]; then
+            fail "no checksum published at $sum_url and SP_REQUIRE_CHECKSUM=1"
+        fi
+        say "  ${DIM}checksum${RESET} not published for this release; skipping verification"
+    else
+        expected=$(cut -d' ' -f1 <"$sum_tmp" | tr 'A-F' 'a-f' | tr -d ' \n')
+        case "$expected" in
+            *[!0-9a-f]* | '')
+                fail "malformed checksum at $sum_url"
+                ;;
+        esac
+        if [ "${#expected}" -ne 64 ]; then
+            fail "malformed checksum at $sum_url (expected 64 hex characters)"
+        fi
+        if ! actual=$(sha256_of "$tmp"); then
+            if [ "${SP_REQUIRE_CHECKSUM:-0}" = "1" ]; then
+                fail "no sha256sum, shasum or openssl available to verify the download"
+            fi
+            say "  ${DIM}checksum${RESET} no SHA-256 tool available; skipping verification"
+        elif [ "$actual" != "$expected" ]; then
+            fail "checksum mismatch for $url
+  expected $expected
+  actual   $actual
+  The download is corrupt or has been tampered with. Nothing was installed."
+        else
+            ok "checksum verified ${expected}"
+        fi
     fi
 
     dir=$(choose_install_dir)

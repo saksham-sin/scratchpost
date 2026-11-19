@@ -269,6 +269,11 @@ Mode changes apply immediately — the daemon updates the seqlock snapshot and t
 curl -sSL https://raw.githubusercontent.com/saksham-sin/scratchpost/main/install.sh | sh
 ```
 
+The installer verifies the release's published SHA-256 before installing and
+refuses to install a binary that does not match. Set `SP_REQUIRE_CHECKSUM=1` to
+also refuse releases that publish no checksum. Re-run the same command to
+update; it always resolves the latest release.
+
 ### 2. Initialize your master folder
 
 ```sh

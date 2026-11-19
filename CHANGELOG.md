@@ -12,6 +12,14 @@ Reliability release driven by two production agents that ran ScratchPost
 against a real multi-service workspace. The headline fix is that a lease
 expiring mid-task no longer destroys uncommitted work.
 
+### Added
+
+- **The installer verifies the release checksum.** It downloads the published
+  `.sha256` alongside the binary and refuses to install on a mismatch, so a
+  corrupt or tampered download cannot reach `$PATH`. `SP_REQUIRE_CHECKSUM=1`
+  additionally refuses releases that publish no checksum. Falls back to
+  `sha256sum`, `shasum`, or `openssl`.
+
 ### Fixed
 
 - **Re-attaching no longer destroys uncommitted work.** A lease can expire while
