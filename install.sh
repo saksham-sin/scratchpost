@@ -139,13 +139,22 @@ main() {
     mkdir -p "$dir" || fail "cannot create $dir"
 
     dest="$dir/$BIN_NAME"
+    # Install by renaming a fresh file over the destination rather than copying
+    # into it. Overwriting in place mutates the inode, and macOS caches code
+    # signing state per inode: the stale cache makes the kernel SIGKILL the new
+    # binary on first exec. A rename swaps the inode and sidesteps the cache.
+    staged="$dir/.$BIN_NAME.new.$$"
     if [ -w "$dir" ]; then
-        cp "$tmp" "$dest"
+        cp "$tmp" "$staged" || fail "cannot write to $dir"
+        chmod 755 "$staged" || fail "cannot make $staged executable"
+        mv -f "$staged" "$dest" || fail "cannot install $dest"
     else
         say "  ${DIM}escalating${RESET} $dir is not writable"
-        sudo mkdir -p "$dir" && sudo cp "$tmp" "$dest" || fail "cannot write to $dir"
+        sudo mkdir -p "$dir" || fail "cannot create $dir"
+        sudo cp "$tmp" "$staged" || fail "cannot write to $dir"
+        sudo chmod 755 "$staged" || fail "cannot make $staged executable"
+        sudo mv -f "$staged" "$dest" || fail "cannot install $dest"
     fi
-    chmod 755 "$dest" || fail "cannot make $dest executable"
 
     ok "installed $dest"
 
